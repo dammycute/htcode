@@ -191,7 +191,7 @@ export default function CaseStudyPage() {
                                         <span>// Technical Focus</span>
                                         <span className="text-primary">Snippet</span>
                                     </div>
-                                    <div className="text-slate-300">
+                                    <div className="text-slate-300 whitespace-pre-wrap break-all">
                                         {caseStudy?.codeSnippet || "async function processTransaction(data) {\n  const result = await db.transaction(async (tx) => {\n    // Complex business logic under NDA\n    return await service.execute(data, { tx });\n  });\n  return result;\n}"}
                                     </div>
                                 </div>

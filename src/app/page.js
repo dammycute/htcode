@@ -1,33 +1,125 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import WeeklyLogSection from '@/components/WeeklyLogSection';
 import WorkExperienceSection from '@/components/WorkExperienceSection';
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Build Log', href: '/updates', type: 'link' },
+    { name: 'Tech Stack', href: '#expertise', type: 'anchor' },
+    { name: 'Work', href: '#projects', type: 'anchor' },
+    { name: 'Contact', href: '#contact', type: 'anchor' },
+  ];
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background-light dark:bg-background-dark">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-background-light/90 dark:bg-background-dark/90 border-b border-gray-200 dark:border-slate-800">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3 group cursor-pointer">
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 backdrop-blur-md ${scrolled ? 'py-3 bg-white/90 dark:bg-background-dark/90 border-b border-gray-200 dark:border-slate-800 shadow-sm' : 'py-5 bg-transparent border-b border-transparent'}`}>
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3 group cursor-pointer">
             <div className="relative w-8 h-8 flex items-center justify-center bg-primary rounded text-white font-mono font-bold text-lg">
               &gt;_
             </div>
             <span className="text-xl font-bold tracking-tight font-mono">
               &lt;Ht-<span className="text-primary">code</span>/&gt;
             </span>
-          </div>
+          </Link>
+
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8 bg-white/5 dark:bg-slate-800/50 px-6 py-2 rounded border border-gray-200 dark:border-white/5">
-            <a className="text-sm font-medium hover:text-primary transition-colors font-mono" href="/updates">Build Log</a>
-            <a className="text-sm font-medium hover:text-primary transition-colors font-mono" href="#expertise">Tech Stack</a>
-            <a className="text-sm font-medium hover:text-primary transition-colors font-mono" href="#projects">Work</a>
-            <a className="text-sm font-medium hover:text-primary transition-colors font-mono" href="#contact">Contact</a>
+            {navLinks.map((link) => (
+              link.type === 'link' ? (
+                <Link key={link.name} className="text-sm font-medium hover:text-primary transition-colors font-mono" href={link.href}>{link.name}</Link>
+              ) : (
+                <a key={link.name} className="text-sm font-medium hover:text-primary transition-colors font-mono" href={link.href}>{link.name}</a>
+              )
+            ))}
           </div>
-          <a href="/Damilola-Olawoore-Resume.pdf" download className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-violet-900/20 font-mono">
-            <span>Resume.pdf</span>
-            <span className="material-symbols-outlined text-sm">download</span>
-          </a>
-          <button className="md:hidden text-2xl flex items-center justify-center">
-            <span className="material-symbols-outlined">menu</span>
-          </button>
+
+          <div className="flex items-center gap-4">
+            <a href="/Damilola-Olawoore-Resume.pdf" download className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-violet-900/20 font-mono">
+              <span>Resume.pdf</span>
+              <span className="material-symbols-outlined text-sm">download</span>
+            </a>
+
+            {/* Hamburger Button - Optimized for Reach */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 active:scale-90 transition-all z-[110]"
+              aria-label="Toggle Menu"
+            >
+              <span className="material-symbols-outlined text-2xl">
+                {isMenuOpen ? 'close' : 'menu'}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div className={`fixed inset-0 bg-white dark:bg-background-dark z-[105] flex flex-col p-8 transition-all duration-500 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
+          <div className="flex items-center justify-between mb-16">
+            <span className="font-mono font-bold text-primary">&gt;_ MENU</span>
+            <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+              <span className="material-symbols-outlined">close</span>
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-8">
+            {navLinks.map((link, idx) => (
+              link.type === 'link' ? (
+                <Link
+                  key={link.name}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-4xl font-black font-mono hover:text-primary transition-colors flex items-center justify-between group"
+                  href={link.href}
+                  style={{ transitionDelay: `${idx * 50}ms` }}
+                >
+                  {link.name}
+                  <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-all -translate-x-4 group-hover:translate-x-0">arrow_forward</span>
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-4xl font-black font-mono hover:text-primary transition-colors flex items-center justify-between group"
+                  href={link.href}
+                  style={{ transitionDelay: `${idx * 50}ms` }}
+                >
+                  {link.name}
+                  <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-all -translate-x-4 group-hover:translate-x-0">arrow_forward</span>
+                </a>
+              )
+            ))}
+
+            <a
+              href="/Damilola-Olawoore-Resume.pdf"
+              download
+              className="mt-8 flex items-center justify-between bg-primary text-white p-6 rounded-xl text-xl font-bold font-mono shadow-xl shadow-primary/20"
+            >
+              <span>Resume.pdf</span>
+              <span className="material-symbols-outlined">download</span>
+            </a>
+          </div>
+
+          <div className="mt-auto flex justify-center gap-8 pb-8 text-slate-500 font-mono text-sm">
+            <a href="https://github.com/dammycute" target="_blank" rel="noopener noreferrer">GH</a>
+            <a href="https://x.com/ht__code" target="_blank" rel="noopener noreferrer">TW</a>
+            <a href="https://www.linkedin.com/in/htcode/" target="_blank" rel="noopener noreferrer">LI</a>
+          </div>
         </div>
       </nav>
 
@@ -59,11 +151,11 @@ export default function Home() {
               // 6 Months. Weekly Shipments. Documenting the continuous journey of constructing scalable backends and interactive frontends, powered by AI collaboration.
             </p>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-4 animate-fade-in-up delay-300">
-              <a className="group flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded font-bold transition-all hover:bg-primary-dark hover:scale-105 shadow-lg shadow-violet-500/20 font-mono" href="/updates">
+              <Link className="group flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded font-bold transition-all hover:bg-primary-dark hover:scale-105 shadow-lg shadow-violet-500/20 font-mono text-sm" href="/updates">
                 View Log
                 <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">calendar_month</span>
-              </a>
-              <a className="flex items-center justify-center gap-2 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-gray-200 dark:border-slate-700 px-8 py-4 rounded font-bold transition-all hover:border-primary/50 hover:text-primary font-mono" href="#projects">
+              </Link>
+              <a className="flex items-center justify-center gap-2 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-gray-200 dark:border-slate-700 px-8 py-4 rounded font-bold transition-all hover:border-primary/50 hover:text-primary font-mono text-sm" href="#projects">
                 Projects
               </a>
             </div>
@@ -131,7 +223,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="absolute -bottom-6 -right-6 bg-surface-dark p-4 rounded border border-slate-700 shadow-xl flex items-center gap-4 animate-float z-20">
+            <div className="absolute -bottom-6 -right-6 bg-slate-800 p-4 rounded border border-slate-700 shadow-xl flex items-center gap-4 animate-float z-20">
               <div className="flex flex-col">
                 <span className="text-xs text-slate-400 uppercase font-mono">Current Phase</span>
                 <span className="font-bold text-primary font-mono text-sm">Month 1 / 6</span>
@@ -155,7 +247,7 @@ export default function Home() {
       <WeeklyLogSection />
 
       {/* Expertise Section */}
-      <section className="py-24 relative overflow-hidden bg-surface-dark border-t border-slate-700" id="expertise">
+      <section className="py-24 relative overflow-hidden bg-slate-900 border-t border-slate-700" id="expertise">
         <div className="max-w-7xl mx-auto px-6 mb-16">
           <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
             <div>
@@ -222,7 +314,7 @@ export default function Home() {
       <WorkExperienceSection />
 
       {/* Scrolling Text Banner */}
-      <div className="py-12 bg-surface-dark border-y border-slate-700 overflow-hidden">
+      <div className="py-12 bg-slate-900 border-y border-slate-700 overflow-hidden">
         <div className="flex whitespace-nowrap animate-scroll-left">
           <span className="text-4xl font-black text-slate-700 dark:text-slate-600/30 px-8 font-mono">BACKEND DEVELOPMENT • DECENTRALIZED SYSTEMS • AI ASSISTED CODING • PYTHON EXPERT • 6-MONTH BUILD LOG •</span>
           <span className="text-4xl font-black text-slate-700 dark:text-slate-600/30 px-8 font-mono">BACKEND DEVELOPMENT • DECENTRALIZED SYSTEMS • AI ASSISTED CODING • PYTHON EXPERT • 6-MONTH BUILD LOG •</span>
