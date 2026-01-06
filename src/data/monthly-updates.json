@@ -1,0 +1,170 @@
+{
+    "currentMonth": "January 2026",
+    "monthlyProjects": [
+        {
+            "id": "month-01-2026",
+            "month": "January 2026",
+            "status": "active",
+            "projects": [
+                {
+                    "weekNumber": "Week 1",
+                    "dateRange": "Jan 5 - Jan 10, 2026",
+                    "status": "in-progress",
+                    "title": "RESTful Blog API",
+                    "description": "A robust backend API handling user authentication, CRUD operations for blog posts, and comment management. Designed for scalability.",
+                    "sections": {
+                        "progress": "Set up Django project structure with Django REST Framework. Implemented user authentication using JWT tokens. Created models for User, BlogPost, and Comment with proper relationships. Built serializers for data validation and API endpoints for CRUD operations.",
+                        "challenges": "Handling nested serializers for comments within blog posts while maintaining good performance. Setting up proper permission classes for different user roles.",
+                        "solutions": "Implemented custom permission classes and used select_related/prefetch_related for optimized database queries. Created separate serializers for list and detail views.",
+                        "learnings": "Deepened understanding of DRF's authentication system and how to structure RESTful APIs following best practices."
+                    },
+                    "techStack": [
+                        "Django",
+                        "DRF",
+                        "PostgreSQL",
+                        "JWT"
+                    ],
+                    "tags": [
+                        "#Backend",
+                        "#API"
+                    ]
+                },
+                {
+                    "weekNumber": "Week 1",
+                    "dateRange": "Jan 5 - Jan 10, 2026",
+                    "status": "complete",
+                    "title": "Dynamic Portfolio Website",
+                    "description": "A modern, dynamic portfolio with monthly project tracking, real-time updates, and admin authentication. Features smooth animations and dark mode.",
+                    "sections": {
+                        "progress": "Developed a custom update system using JSON file storage and Next.js API routes. Integrated a secure admin panel for real-time project logging and case study management.",
+                        "challenges": "Implementing seamless authentication for the admin panel without a full database while maintaining security for sensitive endpoints.",
+                        "solutions": "Used a combination of local storage auth tokens and server-side validation. Built a dynamic routing system for automated case study page generation.",
+                        "learnings": "Mastered Next.js App Router patterns and specialized in building efficient, data-driven static-first applications with dynamic admin capabilities."
+                    },
+                    "techStack": [
+                        "Next.js",
+                        "React",
+                        "Tailwind CSS",
+                        "JavaScript"
+                    ],
+                    "tags": [
+                        "#Frontend",
+                        "#Fullstack"
+                    ]
+                },
+                {
+                    "weekNumber": "Week 2",
+                    "dateRange": "Jan 13 - Jan 17, 2026",
+                    "status": "complete",
+                    "title": "Real Estate Investment Platform",
+                    "description": "A professional landing page for 'Realown', a fractional real estate investment platform. Focused on trust-building and accessibility.",
+                    "sections": {
+                        "progress": "Developed a multi-page static site with a narrative-driven UX. Integrated custom brand typography and mobile-responsive navigation.",
+                        "learnings": "Focused on financial UX/UI - how to communicate complex investment concepts through visual hierarchy and clean design."
+                    },
+                    "techStack": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript"
+                    ],
+                    "tags": [
+                        "#Frontend",
+                        "#RealEstate",
+                        "#Design"
+                    ]
+                },
+                {
+                    "weekNumber": "Week 2",
+                    "dateRange": "Jan 13 - Jan 17, 2026",
+                    "status": "complete",
+                    "title": "Secure Todo API",
+                    "description": "Production-ready RESTful Todo API with JWT auth and row-level authorization. Ensures users only access their own data.",
+                    "sections": {
+                        "progress": "Built with Django Rest Framework. Implemented custom User model and scoped querysets for data isolation.",
+                        "learnings": "Deepened understanding of row-level permissions and JWT rotation strategies in DRF."
+                    },
+                    "techStack": [
+                        "Django",
+                        "DRF",
+                        "PostgreSQL",
+                        "JWT"
+                    ],
+                    "tags": [
+                        "#Backend",
+                        "#Security",
+                        "#API"
+                    ]
+                },
+                {
+                    "weekNumber": "Week 3",
+                    "dateRange": "Jan 20 - Jan 24, 2026",
+                    "status": "planned",
+                    "title": "Weather API Wrapper",
+                    "description": "A proxy service for 3rd party weather APIs that implements caching to reduce rate limits and improve response times.",
+                    "sections": {},
+                    "techStack": [
+                        "Python",
+                        "Redis",
+                        "Celery"
+                    ],
+                    "tags": [
+                        "#Backend",
+                        "#Caching"
+                    ]
+                },
+                {
+                    "weekNumber": "Week 3",
+                    "dateRange": "Jan 20 - Jan 24, 2026",
+                    "status": "planned",
+                    "title": "Glassmorphic Weather Dashboard",
+                    "description": "A visually stunning weather dashboard using the glassmorphism trend. Shows real-time data fetched from our wrapper.",
+                    "sections": {},
+                    "techStack": [
+                        "React",
+                        "Tailwind CSS",
+                        "Fetch API"
+                    ],
+                    "tags": [
+                        "#Frontend",
+                        "#Design"
+                    ]
+                },
+                {
+                    "weekNumber": "Week 4",
+                    "dateRange": "Jan 27 - Jan 31, 2026",
+                    "status": "planned",
+                    "title": "Recipe API & Search",
+                    "description": "A complex data API allowing users to search recipes by ingredients. Utilizes advanced querying capabilities of Supabase.",
+                    "sections": {},
+                    "techStack": [
+                        "Supabase",
+                        "DRF",
+                        "PostgreSQL"
+                    ],
+                    "tags": [
+                        "#Backend",
+                        "#Database"
+                    ]
+                },
+                {
+                    "weekNumber": "Week 4",
+                    "dateRange": "Jan 27 - Jan 31, 2026",
+                    "status": "planned",
+                    "title": "Particle System Generator",
+                    "description": "A canvas-based generator for creating dynamic particle backgrounds. Users can export configurations for their own sites.",
+                    "sections": {},
+                    "techStack": [
+                        "TypeScript",
+                        "React",
+                        "Canvas API",
+                        "Framer Motion"
+                    ],
+                    "tags": [
+                        "#Frontend",
+                        "#Canvas"
+                    ]
+                }
+            ]
+        }
+    ]
+}

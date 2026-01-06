@@ -1,0 +1,336 @@
+[
+    {
+        "id": "real-estate",
+        "title": "Real Estate Investment Platform",
+        "company": "Realown",
+        "category": "FINTECH",
+        "role": "Lead Frontend Developer",
+        "description": "A professional landing page for 'Realown', a fractional real estate investment platform. Focused on trust-building, accessibility, and clear communication of financial concepts.",
+        "tags": [
+            "#Fintech",
+            "#UXDesign",
+            "#Accessibility"
+        ],
+        "techStack": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "GSAP"
+        ],
+        "demo": "https://realown1.netlify.app/",
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Designing a trustworthy platform for young investors to understand fractional real estate ownership.",
+            "architecture": [
+                "Semantic HTML5 structure",
+                "Mobile-first responsive design",
+                "Narrative-driven UX flow",
+                "Custom brand typography integration"
+            ],
+            "implementation": "Implemented using a stability-focused dark green palette and GSAP animations to create a premium, trust-building financial experience.",
+            "codeSnippet": "// Reveal animations\nconst observer = new IntersectionObserver((entries) => {\n  entries.forEach(entry => {\n    if (entry.isIntersecting) entry.target.classList.add('reveal-active');\n  });\n});",
+            "metrics": [
+                {
+                    "label": "Pages",
+                    "value": "5"
+                },
+                {
+                    "label": "Trust Score",
+                    "value": "High"
+                },
+                {
+                    "label": "Mobile Ready",
+                    "value": "100%"
+                }
+            ],
+            "strengths": [
+                "Professional team presentation",
+                "Consistent brand identity",
+                "Strategic CTA placement"
+            ],
+            "improvements": [
+                "Add form validation",
+                "Enhance SEO metadata"
+            ]
+        }
+    },
+    {
+        "id": "secure-todo-app",
+        "title": "Secure Todo Full-Stack App",
+        "company": "Personal Project",
+        "category": "FULLSTACK",
+        "role": "Lead Developer",
+        "description": "A high-performance full-stack application with production-ready security, row-level authorization, and a responsive frontend.",
+        "tags": [
+            "#Security",
+            "#Fullstack",
+            "#Python",
+            "#React"
+        ],
+        "techStack": [
+            "Django",
+            "DRF",
+            "React",
+            "PostgreSQL",
+            "JWT"
+        ],
+        "github": "https://github.com/dammycute/todoapp.git",
+        "frontend_github": "https://github.com/dammycute/todo-frontend.git",
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Ensuring strict data isolation between users while maintaining low latency and a seamless frontend experience.",
+            "architecture": [
+                "Stateless JWT Authentication",
+                "Row-Level Authorization Layer",
+                "Decoupled React Frontend",
+                "Optimized SQL Queries"
+            ],
+            "implementation": "The backend uses DRF with a custom permission layer to scope all CRUD actions to the authenticated user. The frontend leverages Axios interceptors for secure token management.",
+            "codeSnippet": "def get_queryset(self):\n    return Todo.objects.filter(owner=self.request.user)",
+            "metrics": [
+                {
+                    "label": "Security",
+                    "value": "L3"
+                },
+                {
+                    "label": "API Speed",
+                    "value": "Sub-100ms"
+                },
+                {
+                    "label": "Auth",
+                    "value": "JWT"
+                }
+            ],
+            "strengths": [
+                "Secure data isolation",
+                "Intuitive Task Management UI",
+                "Production-ready auth flow"
+            ],
+            "improvements": [
+                "Add Real-time notifications",
+                "Implement offline persistence"
+            ]
+        }
+    },
+    {
+        "id": "curated",
+        "title": "CurateD",
+        "company": "Collaborative",
+        "category": "EDTECH",
+        "role": "Backend Developer",
+        "description": "Turn YouTube into your personal study partner. Discover curated educational video paths and organize learning playlists efficiently.",
+        "tags": [
+            "#EdTech",
+            "#VideoAPI",
+            "#CuratedContent"
+        ],
+        "techStack": [
+            "Python",
+            "Django",
+            "YouTube API",
+            "PostgreSQL"
+        ],
+        "github": "https://github.com/dammycute/CuratED.git",
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Structuring complex YouTube metadata into logical learning paths for users.",
+            "architecture": [
+                "YouTube Data v3 Integration",
+                "Learning Path Algorithm",
+                "Real-time Progress Tracking",
+                "Relational Data Schema"
+            ],
+            "implementation": "Built a custom progress-engine that tracks video completion across dynamic playlists, providing visual feedback on learning milestones.",
+            "codeSnippet": "const progress = (completed / total) * 100;",
+            "metrics": [
+                {
+                    "label": "API Speed",
+                    "value": "Fast"
+                },
+                {
+                    "label": "UX Score",
+                    "value": "High"
+                },
+                {
+                    "label": "Data Sync",
+                    "value": "Live"
+                }
+            ],
+            "strengths": [
+                "Seamless API integration",
+                "Intuitive path visualization"
+            ],
+            "improvements": [
+                "Social path sharing",
+                "AI-generated summaries"
+            ]
+        }
+    },
+    {
+        "id": "portfolio",
+        "title": "Dynamic Portfolio Website",
+        "company": "Personal Project",
+        "category": "FULLSTACK",
+        "role": "Lead Developer",
+        "description": "A high-performance living build log with monthly tracking, admin-driven updates, and technical deep-dives.",
+        "tags": [
+            "#NextJS",
+            "#Performance",
+            "#Design"
+        ],
+        "techStack": [
+            "Next.js",
+            "Tailwind CSS v4",
+            "React",
+            "REST API"
+        ],
+        "github": "https://github.com/dammycute/jan-builds",
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Building a performant, data-driven portfolio that automates content updates without heavy database overhead.",
+            "architecture": [
+                "App Router Architecture",
+                "File-based JSON Storage",
+                "Secure Admin Middleware",
+                "Dynamic Case Study Generator"
+            ],
+            "implementation": "Leveraged Next.js Server Components and a custom API layer for instant build log updates and low-latency navigation.",
+            "codeSnippet": "export async function GET() { return Response.json(data); }",
+            "metrics": [
+                {
+                    "label": "Lighthouse",
+                    "value": "98/100"
+                },
+                {
+                    "label": "Framework",
+                    "value": "Next.js 16"
+                },
+                {
+                    "label": "UX",
+                    "value": "Premium"
+                }
+            ],
+            "strengths": [
+                "Scalable documentation flow",
+                "Minimalist but rich UI"
+            ],
+            "improvements": [
+                "Add interactive analytics",
+                "Expand project gallery"
+            ]
+        }
+    },
+    {
+        "id": "fysi",
+        "title": "FYSI (Greenhouse)",
+        "company": "Collaborative",
+        "category": "E-COMMERCE",
+        "role": "Backend Developer",
+        "description": "An eco-friendly e-commerce platform featuring vendor dashboards, payment processing, and comprehensive order fulfillment.",
+        "tags": [
+            "#E-Commerce",
+            "#Paystack",
+            "#Eco-Friendly"
+        ],
+        "techStack": [
+            "Python",
+            "Django",
+            "Paystack API",
+            "React"
+        ],
+        "github": "https://github.com/Techies-Collab-and-Upskill-Live-Project/greenhouse-backend.git",
+        "confidential": false
+    },
+    {
+        "id": "escrow",
+        "title": "Multi-Chain Escrow Platform",
+        "company": "Current",
+        "category": "WEB3",
+        "role": "Backend Developer",
+        "description": "Facilitating secure, trustless transactions between users and agents (merchants) on decentralized networks.",
+        "tags": [
+            "#Web3",
+            "#SmartContracts",
+            "#Security"
+        ],
+        "techStack": [
+            "Solidity",
+            "Web3.py",
+            "React",
+            "Ethereum"
+        ],
+        "github": null,
+        "confidential": true
+    },
+    {
+        "id": "blog-api",
+        "title": "RESTful Blog API",
+        "company": "Personal Project",
+        "category": "BACKEND",
+        "role": "Lead Developer",
+        "description": "A robust, multi-tenant blog engine with JWT authentication and optimized relational data handling.",
+        "tags": [
+            "#API",
+            "#Backend",
+            "#Scalability"
+        ],
+        "techStack": [
+            "Django",
+            "DRF",
+            "PostgreSQL",
+            "JWT"
+        ],
+        "github": null,
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Balancing complex relational data with high concurrency and security.",
+            "architecture": [
+                "JWT Middleware",
+                "ORM Query Optimization",
+                "Atomic Write Operations",
+                "Hierarchical Data Schema"
+            ],
+            "implementation": "Implemented using a decoupled serializer strategy to optimize bandwidth and custom manager methods for query efficiency.",
+            "codeSnippet": "class Meta:\n    model = Post\n    fields = '__all__'",
+            "metrics": [
+                {
+                    "label": "Latency",
+                    "value": "45ms"
+                },
+                {
+                    "label": "Coverage",
+                    "value": "92%"
+                }
+            ],
+            "strengths": [
+                "Optimized ORM usage",
+                "Secure data isolation"
+            ],
+            "improvements": [
+                "Redis rate limiting",
+                "Swagger docs"
+            ]
+        }
+    },
+    {
+        "id": "edu-games",
+        "title": "Children's Bible Games",
+        "company": "Past Experience",
+        "category": "EDTECH",
+        "role": "Backend Developer",
+        "description": "Engaging educational game applications featuring puzzle mechanics, animal pair matching, and interactive learning UI.",
+        "tags": [
+            "#GameLogic",
+            "#InteractiveUI",
+            "#EdTech"
+        ],
+        "techStack": [
+            "Python",
+            "Django",
+            "PostgreSQL",
+            "JWT"
+        ],
+        "github": null,
+        "confidential": true
+    }
+]

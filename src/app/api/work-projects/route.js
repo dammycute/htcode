@@ -1,0 +1,10 @@
+import { promises as fs } from 'fs';
+import path from 'path';
+
+export async function GET() {
+    const jsonDirectory = path.join(process.cwd(), 'src/data');
+    const fileContents = await fs.readFile(jsonDirectory + '/work-projects.json', 'utf8');
+    return new Response(fileContents, {
+        headers: { 'Content-Type': 'application/json' },
+    });
+}

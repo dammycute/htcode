@@ -1,0 +1,100 @@
+{
+  "updates": [
+    {
+      "id": "week-01",
+      "weekNumber": "01",
+      "dateRange": "Jan 1 - Jan 7, 2026",
+      "status": "complete",
+      "projects": [
+        {
+          "title": "RESTful Blog API",
+          "icon": "dns",
+          "description": "A robust backend API handling user authentication, CRUD operations for blog posts, and comment management. Designed for scalability.",
+          "focus": "API Design",
+          "stack": "Django + DRF",
+          "tags": ["PostgreSQL", "JWT Auth", "Swagger UI"]
+        },
+        {
+          "title": "Animated Portfolio",
+          "icon": "web",
+          "description": "A highly interactive landing page showcasing the developer's work. Features smooth scrolling and reveal animations.",
+          "focus": "UX/UI Motion",
+          "stack": "HTML/CSS/JS",
+          "tags": ["GSAP", "Responsive", "Dark Mode"]
+        }
+      ]
+    },
+    {
+      "id": "week-02",
+      "weekNumber": "02",
+      "dateRange": "Jan 8 - Jan 14, 2026",
+      "status": "planned",
+      "projects": [
+        {
+          "title": "URL Shortener API",
+          "icon": "link",
+          "description": "A high-performance link shortening service with built-in analytics tracking for click counts, referrers, and locations.",
+          "focus": "Analytics",
+          "stack": "Django + Redis",
+          "tags": ["Hashing", "Celery Tasks", "PostgreSQL"]
+        },
+        {
+          "title": "Typing Effect Gen",
+          "icon": "keyboard",
+          "description": "An interactive tool that simulates human typing behavior. Users can configure speed, errors, and cursor styles.",
+          "focus": "DOM Manipulation",
+          "stack": "JavaScript",
+          "tags": ["Async/Await", "Custom Events", "CSS Animation"]
+        }
+      ]
+    },
+    {
+      "id": "week-03",
+      "weekNumber": "03",
+      "dateRange": "Jan 15 - Jan 21, 2026",
+      "status": "planned",
+      "projects": [
+        {
+          "title": "Weather API Wrapper",
+          "icon": "cloud",
+          "description": "A proxy service for 3rd party weather APIs that implements caching to reduce rate limits and improve response times.",
+          "focus": "Caching Strategy",
+          "stack": "Redis + Celery",
+          "tags": ["Rate Limiting", "External API", "Python"]
+        },
+        {
+          "title": "Glassmorphic Weather",
+          "icon": "wb_sunny",
+          "description": "A visually stunning weather dashboard using the glassmorphism trend. Shows real-time data fetched from our wrapper.",
+          "focus": "Modern CSS",
+          "stack": "React + Tailwind",
+          "tags": ["Backdrop Filter", "Fetch API", "Dark/Light"]
+        }
+      ]
+    },
+    {
+      "id": "week-04",
+      "weekNumber": "04",
+      "dateRange": "Jan 22 - Jan 28, 2026",
+      "status": "planned",
+      "projects": [
+        {
+          "title": "Recipe API & Search",
+          "icon": "restaurant_menu",
+          "description": "A complex data API allowing users to search recipes by ingredients. Utilizes advanced querying capabilities of Supabase.",
+          "focus": "Query Optimization",
+          "stack": "Supabase + DRF",
+          "tags": ["PostgreSQL Search", "Filtering", "Relations"]
+        },
+        {
+          "title": "Particle System Gen",
+          "icon": "grain",
+          "description": "A canvas-based generator for creating dynamic particle backgrounds. Users can export configurations for their own sites.",
+          "focus": "Canvas API",
+          "stack": "TypeScript + React",
+          "tags": ["Framer Motion", "Physics", "Performance"]
+        }
+      ]
+    }
+  ]
+}
