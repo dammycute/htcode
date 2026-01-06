@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
 
 export default function AdminDashboard() {
     const router = useRouter();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const { isAuthenticated, logout, loading: authLoading } = useAuth();
     const [weekNumber, setWeekNumber] = useState('');
     const [dateRange, setDateRange] = useState('');
     const [status, setStatus] = useState('planned');
@@ -29,18 +30,13 @@ export default function AdminDashboard() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        // Check authentication
-        const auth = localStorage.getItem('htcode_auth') === 'true';
-        if (!auth) {
+        if (!authLoading && !isAuthenticated) {
             router.push('/admin');
-        } else {
-            setIsAuthenticated(true);
         }
-    }, [router]);
+    }, [isAuthenticated, authLoading, router]);
 
     const handleLogout = () => {
-        localStorage.removeItem('htcode_auth');
-        localStorage.removeItem('htcode_user');
+        logout();
         router.push('/admin');
     };
 

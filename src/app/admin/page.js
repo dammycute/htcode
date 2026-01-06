@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
 
 export default function AdminLoginPage() {
     const [username, setUsername] = useState('');
@@ -10,24 +11,21 @@ export default function AdminLoginPage() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const { isAuthenticated, login } = useAuth();
 
     useEffect(() => {
-        // Check if already logged in
-        const isAuthenticated = localStorage.getItem('htcode_auth') === 'true';
         if (isAuthenticated) {
             router.push('/admin/dashboard');
         }
-    }, [router]);
+    }, [isAuthenticated, router]);
 
     const handleLogin = (e) => {
         e.preventDefault();
         setLoading(true);
         setError('');
 
-        // Simple authentication check
-        if (username === 'htcode' && password === '3490') {
-            localStorage.setItem('htcode_auth', 'true');
-            localStorage.setItem('htcode_user', 'htcode');
+        const success = login(username, password);
+        if (success) {
             router.push('/admin/dashboard');
         } else {
             setError('Invalid username or password');
