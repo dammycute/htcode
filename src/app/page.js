@@ -25,10 +25,10 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-background-light dark:bg-background-dark">
+    <div className="min-h-screen bg-background-light dark:bg-background-dark overflow-x-hidden">
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 backdrop-blur-md ${scrolled ? 'py-3 bg-white/90 dark:bg-background-dark/90 border-b border-gray-200 dark:border-slate-800 shadow-sm' : 'py-5 bg-transparent border-b border-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between w-full">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group cursor-pointer">
             <div className="relative w-8 h-8 flex items-center justify-center bg-primary rounded text-white font-mono font-bold text-lg">
@@ -56,10 +56,10 @@ export default function Home() {
               <span className="material-symbols-outlined text-sm">download</span>
             </a>
 
-            {/* Hamburger Button - Optimized for Reach */}
+            {/* Hamburger Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 active:scale-90 transition-all z-[110]"
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 active:scale-90 transition-all relative z-[210]"
               aria-label="Toggle Menu"
             >
               <span className="material-symbols-outlined text-2xl">
@@ -68,60 +68,58 @@ export default function Home() {
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-white dark:bg-background-dark z-[105] flex flex-col p-8 transition-all duration-500 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
-          <div className="flex items-center justify-between mb-16">
-            <span className="font-mono font-bold text-primary">&gt;_ MENU</span>
-            <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-              <span className="material-symbols-outlined">close</span>
-            </button>
-          </div>
-
-          <div className="flex flex-col gap-8">
-            {navLinks.map((link, idx) => (
-              link.type === 'link' ? (
-                <Link
-                  key={link.name}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-4xl font-black font-mono hover:text-primary transition-colors flex items-center justify-between group"
-                  href={link.href}
-                  style={{ transitionDelay: `${idx * 50}ms` }}
-                >
-                  {link.name}
-                  <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-all -translate-x-4 group-hover:translate-x-0">arrow_forward</span>
-                </Link>
-              ) : (
-                <a
-                  key={link.name}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-4xl font-black font-mono hover:text-primary transition-colors flex items-center justify-between group"
-                  href={link.href}
-                  style={{ transitionDelay: `${idx * 50}ms` }}
-                >
-                  {link.name}
-                  <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-all -translate-x-4 group-hover:translate-x-0">arrow_forward</span>
-                </a>
-              )
-            ))}
-
-            <a
-              href="/Damilola-Olawoore-Resume.pdf"
-              download
-              className="mt-8 flex items-center justify-between bg-primary text-white p-6 rounded-xl text-xl font-bold font-mono shadow-xl shadow-primary/20"
-            >
-              <span>Resume.pdf</span>
-              <span className="material-symbols-outlined">download</span>
-            </a>
-          </div>
-
-          <div className="mt-auto flex justify-center gap-8 pb-8 text-slate-500 font-mono text-sm">
-            <a href="https://github.com/dammycute" target="_blank" rel="noopener noreferrer">GH</a>
-            <a href="https://x.com/ht__code" target="_blank" rel="noopener noreferrer">TW</a>
-            <a href="https://www.linkedin.com/in/htcode/" target="_blank" rel="noopener noreferrer">LI</a>
-          </div>
-        </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 bg-white dark:bg-slate-950 z-[9999] flex flex-col transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800/50">
+          <span className="font-mono font-bold text-primary tracking-widest text-sm">MENU</span>
+          <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+            <span className="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <div className="flex flex-col p-8 gap-1 flex-1 overflow-y-auto bg-white dark:bg-slate-950">
+          {navLinks.map((link, idx) => (
+            link.type === 'link' ? (
+              <Link
+                key={link.name}
+                onClick={() => setIsMenuOpen(false)}
+                className="text-xl font-medium font-mono hover:text-primary transition-colors flex items-center justify-between group py-5 border-b border-slate-50 dark:border-slate-800/30"
+                href={link.href}
+              >
+                <span>{link.name}</span>
+                <span className="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0">arrow_forward</span>
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                onClick={() => setIsMenuOpen(false)}
+                className="text-xl font-medium font-mono hover:text-primary transition-colors flex items-center justify-between group py-5 border-b border-slate-50 dark:border-slate-800/30"
+                href={link.href}
+              >
+                <span>{link.name}</span>
+                <span className="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0">arrow_forward</span>
+              </a>
+            )
+          ))}
+
+          <a
+            href="/Damilola-Olawoore-Resume.pdf"
+            download
+            className="mt-8 flex items-center justify-between bg-primary text-white p-5 rounded-xl text-lg font-bold font-mono shadow-xl shadow-primary/20"
+          >
+            <span>Resume.pdf</span>
+            <span className="material-symbols-outlined">download</span>
+          </a>
+        </div>
+
+        <div className="mt-auto flex justify-center gap-10 pb-12 text-slate-400 font-mono text-xs uppercase tracking-widest">
+          <a href="https://github.com/dammycute" target="_blank" rel="noopener noreferrer" className="hover:text-primary">GitHub</a>
+          <a href="https://x.com/ht__code" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Twitter</a>
+          <a href="https://www.linkedin.com/in/htcode/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">LinkedIn</a>
+        </div>
+      </div>
 
       {/* Hero Header */}
       <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -142,9 +140,9 @@ export default function Home() {
               </span>
               6-Month Challenge: Active
             </div>
-            <h1 className="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight animate-fade-in-up delay-100">
+            <h1 className="text-4xl lg:text-7xl font-black leading-[1.1] tracking-tight animate-fade-in-up delay-100">
               Building <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-500 font-mono text-4xl lg:text-6xl">&lt;FullStack&gt;</span> <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-500 font-mono text-3xl lg:text-6xl">&lt;FullStack&gt;</span> <br />
               Log.
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up delay-200 font-mono text-sm lg:text-base">
@@ -237,13 +235,13 @@ export default function Home() {
           </div>
         </div>
 
-        <a className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 hover:text-primary transition-colors animate-bounce cursor-pointer font-mono" href="/updates">
+        <a className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 hover:text-primary transition-colors animate-bounce cursor-pointer font-mono" href="#weekly-log">
           <span className="text-xs uppercase tracking-widest">See Schedule</span>
           <span className="material-symbols-outlined">keyboard_double_arrow_down</span>
         </a>
       </header>
 
-      {/* Weekly Log Section - Now Dynamic */}
+      {/* Weekly Log Section */}
       <WeeklyLogSection />
 
       {/* Expertise Section */}

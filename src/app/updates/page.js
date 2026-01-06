@@ -49,7 +49,7 @@ export default function UpdatesPage() {
         <div className="bg-[#0c0f19] min-h-screen flex flex-col overflow-x-hidden text-white">
             {/* Navigation */}
             <header className="sticky top-0 z-[100] w-full border-b border-[#232c48] bg-[#0c0f19]/90 backdrop-blur-md px-4 lg:px-10 py-3">
-                <div className="flex items-center justify-between max-w-7xl mx-auto">
+                <div className="flex items-center justify-between max-w-7xl mx-auto w-full">
                     <Link href="/" className="flex items-center gap-4 text-white">
                         <div className="size-8 flex items-center justify-center text-primary">
                             <span className="material-symbols-outlined text-3xl">terminal</span>
@@ -78,34 +78,43 @@ export default function UpdatesPage() {
                     </div>
                 </div>
 
-                {/* Mobile Menu Overlay */}
-                <div className={`fixed inset-0 bg-[#0c0f19] z-[105] flex flex-col p-8 transition-all duration-500 md:hidden ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
-                    <div className="flex flex-col gap-6 mt-16">
-                        <Link onClick={() => setIsMenuOpen(false)} href="/" className="text-4xl font-black font-mono">Home</Link>
-                        <Link onClick={() => setIsMenuOpen(false)} href="/#projects" className="text-4xl font-black font-mono">Projects</Link>
-                        <Link onClick={() => setIsMenuOpen(false)} href="/updates" className="text-4xl font-black font-mono text-primary">Monthly Log</Link>
-                        <Link onClick={() => setIsMenuOpen(false)} href="/admin" className="text-4xl font-black font-mono">Admin Dashboard</Link>
+            </header>
 
-                        <div className="h-[1px] bg-[#232c48] my-4"></div>
-                        <p className="text-[#919fca] font-mono text-xs uppercase tracking-widest">Quick Filters</p>
+            {/* Mobile Menu Overlay */}
+            <div className={`fixed inset-0 bg-white dark:bg-slate-950 z-[9999] flex flex-col transition-transform duration-300 md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                <div className="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800/50">
+                    <span className="font-mono font-bold text-primary tracking-widest text-sm">MENU</span>
+                    <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center">
+                        <span className="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <div className="flex flex-col p-8 gap-1 flex-1 overflow-y-auto bg-white dark:bg-slate-950">
+                    <Link onClick={() => setIsMenuOpen(false)} href="/" className="text-xl font-medium font-mono py-5 border-b border-[#232c48]/50">Home</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/#projects" className="text-xl font-medium font-mono py-5 border-b border-[#232c48]/50">Projects</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/updates" className="text-xl font-medium font-mono text-primary py-5 border-b border-[#232c48]/50">Monthly Log</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href="/admin" className="text-xl font-medium font-mono py-5 border-b border-[#232c48]/50">Admin Dashboard</Link>
+
+                    <div className="pt-10 pb-4">
+                        <p className="text-[#919fca] font-mono text-xs uppercase tracking-widest mb-4">Quick Filters</p>
                         <div className="grid grid-cols-2 gap-3">
                             {['all', 'in-progress', 'complete', 'planned'].map((s) => (
                                 <button
                                     key={s}
                                     onClick={() => { setFilter(s); setIsMenuOpen(false); }}
-                                    className={`px-4 py-3 rounded-lg border text-sm font-bold capitalize ${filter === s ? 'bg-primary border-primary text-white' : 'border-[#232c48] text-[#919fca]'}`}
+                                    className={`px-4 py-3 rounded-lg border text-xs font-bold capitalize transition-all ${filter === s ? 'bg-primary border-primary text-white' : 'border-[#232c48] text-[#919fca] bg-[#1a1d26]'}`}
                                 >
                                     {s.replace('-', ' ')}
                                 </button>
                             ))}
                         </div>
-
-                        <Link href="/#contact" onClick={() => setIsMenuOpen(false)} className="mt-8 flex items-center justify-center bg-white text-black p-4 rounded-xl text-lg font-bold font-mono">
-                            Get in Touch
-                        </Link>
                     </div>
+
+                    <Link href="/#contact" onClick={() => setIsMenuOpen(false)} className="mt-8 flex items-center justify-center bg-primary text-white p-5 rounded-xl text-lg font-bold font-mono shadow-xl shadow-primary/20">
+                        Get in Touch
+                    </Link>
                 </div>
-            </header>
+            </div>
 
             <div className="flex flex-1 max-w-7xl mx-auto w-full pt-8 pb-20 px-4 lg:px-10 gap-8">
                 {/* Left Sidebar */}
@@ -198,7 +207,7 @@ export default function UpdatesPage() {
                                                             </div>
                                                             <div className="h-6 w-[1px] bg-[#232c48]"></div>
                                                             <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded ${project.status === 'complete' ? 'bg-green-500/10 text-green-400' :
-                                                                    project.status === 'in-progress' ? 'bg-primary/10 text-primary' : 'bg-slate-500/10 text-slate-400'
+                                                                project.status === 'in-progress' ? 'bg-primary/10 text-primary' : 'bg-slate-500/10 text-slate-400'
                                                                 }`}>
                                                                 {project.status.replace('-', ' ')}
                                                             </span>

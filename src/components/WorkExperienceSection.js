@@ -31,7 +31,7 @@ export default function WorkExperienceSection() {
     };
 
     return (
-        <section className="py-24 bg-white dark:bg-[#0f172a] relative" id="projects">
+        <section className="py-24 bg-white dark:bg-[#0f172a] relative overflow-hidden" id="projects">
             <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-100 dark:bg-[#111827] opacity-50 skew-x-12 pointer-events-none"></div>
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="mb-12">
