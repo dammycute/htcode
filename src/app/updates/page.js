@@ -27,16 +27,71 @@ export default function UpdatesPage() {
 
     const handleArchiveMonth = async (monthId) => {
         if (!confirm('Archive this month and start a new one?')) return;
-        // implementation...
+
+        try {
+            const res = await fetch('/api/monthly-updates', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    monthId,
+                    action: 'archive-month'
+                })
+            });
+
+            if (res.ok) {
+                const response = await res.json();
+                setData(response.data);
+            }
+        } catch (error) {
+            console.error('Failed to archive month:', error);
+        }
     };
 
     const handleDelete = async (monthId, pIndex) => {
         if (!confirm('Delete this update?')) return;
-        // implementation...
+
+        try {
+            const res = await fetch('/api/monthly-updates', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ monthId, projectIndex: pIndex })
+            });
+
+            if (res.ok) {
+                const response = await res.json();
+                setData(response.data);
+            }
+        } catch (error) {
+            console.error('Failed to delete project:', error);
+        }
     };
 
     const handleUpdateStatus = async (monthId, pIndex, newStatus) => {
-        // implementation...
+        // Find current project state to preserve other fields
+        const month = data.monthlyProjects.find(m => m.id === monthId);
+        if (!month) return;
+
+        const currentProject = month.projects[pIndex];
+        const updatedProject = { ...currentProject, status: newStatus };
+
+        try {
+            const res = await fetch('/api/monthly-updates', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    monthId,
+                    projectIndex: pIndex,
+                    updatedProject
+                })
+            });
+
+            if (res.ok) {
+                const response = await res.json();
+                setData(response.data);
+            }
+        } catch (error) {
+            console.error('Failed to update status:', error);
+        }
     };
 
     if (loading) return (

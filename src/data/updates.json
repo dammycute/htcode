@@ -12,7 +12,11 @@
           "description": "A robust backend API handling user authentication, CRUD operations for blog posts, and comment management. Designed for scalability.",
           "focus": "API Design",
           "stack": "Django + DRF",
-          "tags": ["PostgreSQL", "JWT Auth", "Swagger UI"]
+          "tags": [
+            "PostgreSQL",
+            "JWT Auth",
+            "Swagger UI"
+          ]
         },
         {
           "title": "Animated Portfolio",
@@ -20,7 +24,11 @@
           "description": "A highly interactive landing page showcasing the developer's work. Features smooth scrolling and reveal animations.",
           "focus": "UX/UI Motion",
           "stack": "HTML/CSS/JS",
-          "tags": ["GSAP", "Responsive", "Dark Mode"]
+          "tags": [
+            "GSAP",
+            "Responsive",
+            "Dark Mode"
+          ]
         }
       ]
     },
@@ -31,20 +39,52 @@
       "status": "planned",
       "projects": [
         {
-          "title": "URL Shortener API",
-          "icon": "link",
-          "description": "A high-performance link shortening service with built-in analytics tracking for click counts, referrers, and locations.",
-          "focus": "Analytics",
-          "stack": "Django + Redis",
-          "tags": ["Hashing", "Celery Tasks", "PostgreSQL"]
+          "title": "E-Commerce Microservices API",
+          "icon": "shopping_cart",
+          "description": "A scalable microservices architecture for e-commerce with separate services for products, orders, inventory, and payments.",
+          "focus": "Microservices",
+          "stack": "Django + RabbitMQ",
+          "tags": [
+            "Docker",
+            "Message Queue",
+            "API Gateway"
+          ]
         },
         {
-          "title": "Typing Effect Gen",
-          "icon": "keyboard",
-          "description": "An interactive tool that simulates human typing behavior. Users can configure speed, errors, and cursor styles.",
-          "focus": "DOM Manipulation",
-          "stack": "JavaScript",
-          "tags": ["Async/Await", "Custom Events", "CSS Animation"]
+          "title": "AI Image Generator",
+          "icon": "auto_awesome",
+          "description": "An AI-powered image generation tool using Stable Diffusion API. Users can create custom images from text prompts.",
+          "focus": "AI Integration",
+          "stack": "Python + FastAPI",
+          "tags": [
+            "Stable Diffusion",
+            "ML Models",
+            "Image Processing"
+          ]
+        },
+        {
+          "title": "Real-time Collaboration Tool",
+          "icon": "groups",
+          "description": "A collaborative whiteboard app with real-time cursor tracking, drawing tools, and video chat using WebRTC.",
+          "focus": "Real-time Sync",
+          "stack": "Socket.io + WebRTC",
+          "tags": [
+            "Collaborative Editing",
+            "Video Chat",
+            "Canvas API"
+          ]
+        },
+        {
+          "title": "3D Product Viewer",
+          "icon": "view_in_ar",
+          "description": "An interactive 3D product showcase using Three.js with zoom, rotation, and material customization features.",
+          "focus": "3D Graphics",
+          "stack": "Three.js + React",
+          "tags": [
+            "WebGL",
+            "3D Rendering",
+            "Interactive UI"
+          ]
         }
       ]
     },
@@ -60,7 +100,11 @@
           "description": "A proxy service for 3rd party weather APIs that implements caching to reduce rate limits and improve response times.",
           "focus": "Caching Strategy",
           "stack": "Redis + Celery",
-          "tags": ["Rate Limiting", "External API", "Python"]
+          "tags": [
+            "Rate Limiting",
+            "External API",
+            "Python"
+          ]
         },
         {
           "title": "Glassmorphic Weather",
@@ -68,7 +112,11 @@
           "description": "A visually stunning weather dashboard using the glassmorphism trend. Shows real-time data fetched from our wrapper.",
           "focus": "Modern CSS",
           "stack": "React + Tailwind",
-          "tags": ["Backdrop Filter", "Fetch API", "Dark/Light"]
+          "tags": [
+            "Backdrop Filter",
+            "Fetch API",
+            "Dark/Light"
+          ]
         }
       ]
     },
@@ -84,7 +132,11 @@
           "description": "A complex data API allowing users to search recipes by ingredients. Utilizes advanced querying capabilities of Supabase.",
           "focus": "Query Optimization",
           "stack": "Supabase + DRF",
-          "tags": ["PostgreSQL Search", "Filtering", "Relations"]
+          "tags": [
+            "PostgreSQL Search",
+            "Filtering",
+            "Relations"
+          ]
         },
         {
           "title": "Particle System Gen",
@@ -92,7 +144,11 @@
           "description": "A canvas-based generator for creating dynamic particle backgrounds. Users can export configurations for their own sites.",
           "focus": "Canvas API",
           "stack": "TypeScript + React",
-          "tags": ["Framer Motion", "Physics", "Performance"]
+          "tags": [
+            "Framer Motion",
+            "Physics",
+            "Performance"
+          ]
         }
       ]
     }
