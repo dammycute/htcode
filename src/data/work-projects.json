@@ -332,5 +332,62 @@
         ],
         "github": null,
         "confidential": true
+    },
+    {
+        "id": "notification-service",
+        "title": "Robust Multi-Channel Notification Engine",
+        "company": "Personal Project",
+        "category": "BACKEND / FULLSTACK",
+        "role": "Lead Fullstack Developer",
+        "description": "A high-performance notification delivery system capable of handling thousands of background tasks. Features a premium React dashboard with real-time status tracking and manual retry logic.",
+        "tags": [
+            "#DistributedSystems",
+            "#FullStack",
+            "#SystemDesign"
+        ],
+        "techStack": [
+            "Django",
+            "React",
+            "Celery",
+            "Redis",
+            "WebSockets",
+            "REST API"
+        ],
+        "github": "https://github.com/yourusername/notification-service",
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Ensuring high-latency tasks (like email delivery) don't block the main application thread while providing users with real-time feedback on delivery status.",
+            "architecture": [
+                "Distributed task architecture using Celery and Redis",
+                "RESTful API design for cross-platform integration",
+                "Responsive Glassmorphic frontend layout",
+                "Event-driven state updates via polling and status broadcasting"
+            ],
+            "implementation": "Built with a dual-pane React architecture. The backend uses a producer-consumer model where the API produces tasks and independent Celery workers consume them, ensuring a non-blocking UI.",
+            "codeSnippet": "// Action to re-trigger failed notifications\n@action(detail=True, methods=['post'])\ndef retry(self, request, pk=None):\n    notification = self.get_object()\n    if notification.status == Notification.STATUS_FAILED:\n        notification.status = Notification.STATUS_PENDING\n        notification.save()\n        send_notification_task.delay(notification.id)\n        return Response({'status': 'retry triggered'})",
+            "metrics": [
+                {
+                    "label": "Delivery Channels",
+                    "value": "2"
+                },
+                {
+                    "label": "UI Design",
+                    "value": "Glassmorphism"
+                },
+                {
+                    "label": "Sync Speed",
+                    "value": "Real-time"
+                }
+            ],
+            "strengths": [
+                "Decoupled background processing",
+                "Premium dark-mode aesthetics",
+                "Self-healing retry mechanisms"
+            ],
+            "improvements": [
+                "Implement SMS delivery channel",
+                "Add user authentication & permissions"
+            ]
+        }
     }
 ]

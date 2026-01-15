@@ -76,7 +76,7 @@
         {
           "weekNumber": "Week 2",
           "dateRange": "Jan 13 - Jan 17, 2026",
-          "status": "in-progress",
+          "status": "complete",
           "title": "Notification Service API",
           "description": "A scalable notification service supporting multiple channels (email, SMS, push, WebSocket). Features queuing, retry logic, and delivery tracking with real-time status updates.",
           "sections": {},
