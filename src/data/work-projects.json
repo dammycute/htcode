@@ -353,7 +353,7 @@
             "WebSockets",
             "REST API"
         ],
-        "github": "https://github.com/yourusername/notification-service",
+        "github": "https://github.com/dammycute/notification-service.git",
         "confidential": false,
         "caseStudy": {
             "challenge": "Ensuring high-latency tasks (like email delivery) don't block the main application thread while providing users with real-time feedback on delivery status.",
