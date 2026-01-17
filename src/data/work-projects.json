@@ -113,6 +113,63 @@
         }
     },
     {
+    "id": "task-management",
+    "title": "DevBoard",
+    "company": "DevBoard",
+    "category": "PRODUCTIVITY",
+    "role": "Lead Frontend Developer",
+    "description": "A premium, local-first Kanban dashboard with a developer-centric terminal aesthetic. Built for performance and privacy, it features real-time synchronization across tabs and comprehensive repository management without any backend dependencies.",
+    "tags": [
+        "#Productivity",
+        "#LocalFirst",
+        "#UXDesign",
+        "#DeveloperTools"
+    ],
+    "techStack": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Framer Motion",
+        "@hello-pangea/dnd"
+    ],
+    "demo": "https://task-management-snowy-tau.vercel.app/",
+    "confidential": false,
+    "caseStudy": {
+        "challenge": "Creating a robust, offline-first project management system that delivers a high-end desktop experience entirely within the browser while maintaining real-time tab synchronization.",
+        "architecture": [
+            "Local-first state management using localStorage persistence",
+            "Real-time tab synchronization via the BroadcastChannel API",
+            "Drag-and-drop workflow orchestration with @hello-pangea/dnd",
+            "Adaptive terminal-inspired UI with Glassmorphism and CSS variables"
+        ],
+        "implementation": "Engineered with a 'Terminal Gray' palette and glassmorphism to appeal to developer aesthetics. Utilized Framer Motion for high-fidelity micro-interactions and the BroadcastChannel API to ensure data consistency across multiple browser instances without a central server.",
+        "codeSnippet": "// Real-time tab synchronization via BroadcastChannel\nuseEffect(() => {\n  const bc = new BroadcastChannel('task-channel');\n  bc.onmessage = (ev) => {\n    if (ev.data?.type === 'update_projects') {\n      setProjects(ev.data.payload);\n    }\n  };\n  return () => bc.close();\n}, []);",
+        "metrics": [
+            {
+                "label": "Architecture",
+                "value": "Local-First"
+            },
+            {
+                "label": "Sync Speed",
+                "value": "Instant"
+            },
+            {
+                "label": "Mobile Ready",
+                "value": "100%"
+            }
+        ],
+        "strengths": [
+            "Zero-latency interface",
+            "Multi-repository support",
+            "Privacy-focused data handling"
+        ],
+        "improvements": [
+            "Integrate Cloud sync (Supabase/Firebase)",
+            "Add Markdown support for task descriptions"
+        ]
+    }
+},
+    {
         "id": "curated",
         "title": "CurateD",
         "company": "Collaborative",
