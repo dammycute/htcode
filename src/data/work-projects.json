@@ -1,5 +1,152 @@
 [
     {
+        "id": "rccg-providence",
+        "title": "RCCG Providence Centre",
+        "company": "RCCG",
+        "category": "COMMUNITY",
+        "role": "Lead Fullstack Developer",
+        "description": "A comprehensive web platform for RCCG Providence Centre, featuring community engagement tools, discipleship resources, and event management.",
+        "tags": [
+            "#Community",
+            "#NextJS",
+            "#MongoDB"
+        ],
+        "techStack": [
+            "Next.js",
+            "MongoDB",
+            "Tailwind CSS",
+            "Framer Motion"
+        ],
+        "demo": "https://rccg-providence-center.vercel.app/",
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Building a centralized hub for a growing religious community that requires real-time updates and seamless resource management.",
+            "architecture": [
+                "Next.js App Router for optimal SEO and performance",
+                "MongoDB for flexible content management",
+                "Responsive UI tailored for diverse age groups"
+            ],
+            "implementation": "Designed with a focus on 'The Blessed Family Home' theme, utilizing warm, inviting color palettes and clear navigation to ensure accessibility for all community members.",
+            "metrics": [
+                {
+                    "label": "Platform",
+                    "value": "Next.js"
+                },
+                {
+                    "label": "Database",
+                    "value": "MongoDB"
+                },
+                {
+                    "label": "Tasks",
+                    "value": "Celery"
+                }
+            ],
+            "strengths": [
+                "Intuitive content discovery",
+                "Scalable community features",
+                "Mobile-first engagement"
+            ]
+        }
+    },
+    {
+        "id": "egmos-school",
+        "title": "Englefield Green Montessori",
+        "company": "EGMOS",
+        "category": "EDUCATION",
+        "role": "Fullstack Developer",
+        "description": "A professional educational portal for Englefield Green Montessori School, providing parents and students with essential school information and curriculum details.",
+        "tags": [
+            "#Education",
+            "#NextJS",
+            "#MongoDB"
+        ],
+        "techStack": [
+            "Next.js",
+            "MongoDB",
+            "Tailwind CSS"
+        ],
+        "demo": "https://englefield-green-montessori.vercel.app/",
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Creating a professional digital presence that reflects the Montessori philosophy while providing efficient communication channels for parents.",
+            "architecture": [
+                "Server-side rendering for curriculum documentation",
+                "Inquiry management system with Celery background workers",
+                "Secure parent portal architecture",
+                "Highly accessible and responsive design"
+            ],
+            "implementation": "Leveraged a clean, professional aesthetic that emphasizes trust and educational excellence. Built an automated inquiry processing pipeline using Celery to ensure timely responses.",
+            "codeSnippet": "// Inquiry processing logic\nconst handleInquiry = async (data) => {\n  const res = await fetch('/api/inquiry', { method: 'POST', body: JSON.stringify(data) });\n  return res.json();\n}",
+            "metrics": [
+                {
+                    "label": "UX Score",
+                    "value": "Premium"
+                },
+                {
+                    "label": "DB",
+                    "value": "MongoDB"
+                }
+            ],
+            "strengths": [
+                "Clear information hierarchy",
+                "Automated parent outreach",
+                "Professional brand alignment"
+            ]
+        }
+    },
+    {
+        "id": "seyi-portfolio",
+        "title": "Brand Designer Portfolio",
+        "company": "Seyi Sorinade",
+        "category": "PORTFOLIO",
+        "role": "Fullstack Developer",
+        "description": "A premium portfolio for a Brand Strategist and UI/UX Designer, featuring high-fidelity brand studies and service booking integration.",
+        "tags": [
+            "#Branding",
+            "#Portfolio",
+            "#NextJS",
+            "#MongoDB"
+        ],
+        "techStack": [
+            "Next.js",
+            "MongoDB",
+            "Tailwind CSS",
+            "GSAP"
+        ],
+        "demo": "https://personal-website-five-gamma-70.vercel.app/",
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Translating a 'brand strategist' identity into a performance-driven web experience that converts visitors into consultation bookings.",
+            "architecture": [
+                "Story-driven UX architecture",
+                "Custom booking logic powered by Celery tasks",
+                "Dynamic case study engine with MongoDB",
+                "High-performance asset loading strategies"
+            ],
+            "implementation": "Implemented 'Aligning Purpose with Impact' theme using sleek typography and minimalist design. Used Celery to handle automated follow-up sequences for consultation bookings.",
+            "codeSnippet": "// Smooth scroll to section\nconst scrollTo = (id) => {\n  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });\n};",
+            "metrics": [
+                {
+                    "label": "Design",
+                    "value": "Strategic"
+                },
+                {
+                    "label": "Conversion",
+                    "value": "Optimized"
+                },
+                {
+                    "label": "Stack",
+                    "value": "Next.js"
+                }
+            ],
+            "strengths": [
+                "Narrative-driven flow",
+                "Seamless booking integration",
+                "High-end visual polish"
+            ]
+        }
+    },
+    {
         "id": "real-estate",
         "title": "Real Estate Investment Platform",
         "company": "Realown",
@@ -113,62 +260,62 @@
         }
     },
     {
-    "id": "task-management",
-    "title": "DevBoard",
-    "company": "DevBoard",
-    "category": "PRODUCTIVITY",
-    "role": "Lead Frontend Developer",
-    "description": "A premium, local-first Kanban dashboard with a developer-centric terminal aesthetic. Built for performance and privacy, it features real-time synchronization across tabs and comprehensive repository management without any backend dependencies.",
-    "tags": [
-        "#Productivity",
-        "#LocalFirst",
-        "#UXDesign",
-        "#DeveloperTools"
-    ],
-    "techStack": [
-        "React",
-        "Vite",
-        "Tailwind CSS",
-        "Framer Motion",
-        "@hello-pangea/dnd"
-    ],
-    "demo": "https://task-management-snowy-tau.vercel.app/",
-    "confidential": false,
-    "caseStudy": {
-        "challenge": "Creating a robust, offline-first project management system that delivers a high-end desktop experience entirely within the browser while maintaining real-time tab synchronization.",
-        "architecture": [
-            "Local-first state management using localStorage persistence",
-            "Real-time tab synchronization via the BroadcastChannel API",
-            "Drag-and-drop workflow orchestration with @hello-pangea/dnd",
-            "Adaptive terminal-inspired UI with Glassmorphism and CSS variables"
+        "id": "task-management",
+        "title": "DevBoard",
+        "company": "DevBoard",
+        "category": "PRODUCTIVITY",
+        "role": "Lead Frontend Developer",
+        "description": "A premium, local-first Kanban dashboard with a developer-centric terminal aesthetic. Built for performance and privacy, it features real-time synchronization across tabs and comprehensive repository management without any backend dependencies.",
+        "tags": [
+            "#Productivity",
+            "#LocalFirst",
+            "#UXDesign",
+            "#DeveloperTools"
         ],
-        "implementation": "Engineered with a 'Terminal Gray' palette and glassmorphism to appeal to developer aesthetics. Utilized Framer Motion for high-fidelity micro-interactions and the BroadcastChannel API to ensure data consistency across multiple browser instances without a central server.",
-        "codeSnippet": "// Real-time tab synchronization via BroadcastChannel\nuseEffect(() => {\n  const bc = new BroadcastChannel('task-channel');\n  bc.onmessage = (ev) => {\n    if (ev.data?.type === 'update_projects') {\n      setProjects(ev.data.payload);\n    }\n  };\n  return () => bc.close();\n}, []);",
-        "metrics": [
-            {
-                "label": "Architecture",
-                "value": "Local-First"
-            },
-            {
-                "label": "Sync Speed",
-                "value": "Instant"
-            },
-            {
-                "label": "Mobile Ready",
-                "value": "100%"
-            }
+        "techStack": [
+            "React",
+            "Vite",
+            "Tailwind CSS",
+            "Framer Motion",
+            "@hello-pangea/dnd"
         ],
-        "strengths": [
-            "Zero-latency interface",
-            "Multi-repository support",
-            "Privacy-focused data handling"
-        ],
-        "improvements": [
-            "Integrate Cloud sync (Supabase/Firebase)",
-            "Add Markdown support for task descriptions"
-        ]
-    }
-},
+        "demo": "https://task-management-snowy-tau.vercel.app/",
+        "confidential": false,
+        "caseStudy": {
+            "challenge": "Creating a robust, offline-first project management system that delivers a high-end desktop experience entirely within the browser while maintaining real-time tab synchronization.",
+            "architecture": [
+                "Local-first state management using localStorage persistence",
+                "Real-time tab synchronization via the BroadcastChannel API",
+                "Drag-and-drop workflow orchestration with @hello-pangea/dnd",
+                "Adaptive terminal-inspired UI with Glassmorphism and CSS variables"
+            ],
+            "implementation": "Engineered with a 'Terminal Gray' palette and glassmorphism to appeal to developer aesthetics. Utilized Framer Motion for high-fidelity micro-interactions and the BroadcastChannel API to ensure data consistency across multiple browser instances without a central server.",
+            "codeSnippet": "// Real-time tab synchronization via BroadcastChannel\nuseEffect(() => {\n  const bc = new BroadcastChannel('task-channel');\n  bc.onmessage = (ev) => {\n    if (ev.data?.type === 'update_projects') {\n      setProjects(ev.data.payload);\n    }\n  };\n  return () => bc.close();\n}, []);",
+            "metrics": [
+                {
+                    "label": "Architecture",
+                    "value": "Local-First"
+                },
+                {
+                    "label": "Sync Speed",
+                    "value": "Instant"
+                },
+                {
+                    "label": "Mobile Ready",
+                    "value": "100%"
+                }
+            ],
+            "strengths": [
+                "Zero-latency interface",
+                "Multi-repository support",
+                "Privacy-focused data handling"
+            ],
+            "improvements": [
+                "Integrate Cloud sync (Supabase/Firebase)",
+                "Add Markdown support for task descriptions"
+            ]
+        }
+    },
     {
         "id": "curated",
         "title": "CurateD",

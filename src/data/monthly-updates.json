@@ -55,7 +55,7 @@
         {
           "weekNumber": "Week 2",
           "dateRange": "Jan 13 - Jan 17, 2026",
-          "status": "in-progress",
+          "status": "complete",
           "title": "Task Management Dashboard",
           "description": "A modern, interactive task management dashboard with drag-and-drop Kanban boards, real-time updates, and advanced filtering. Features beautiful animations and dark mode.",
           "sections": {},
@@ -97,7 +97,7 @@
         {
           "weekNumber": "Week 3",
           "dateRange": "Jan 20 - Jan 24, 2026",
-          "status": "planned",
+          "status": "complete",
           "title": "Weather API Wrapper",
           "description": "A proxy service for 3rd party weather APIs that implements caching to reduce rate limits and improve response times.",
           "sections": {},
@@ -114,7 +114,7 @@
         {
           "weekNumber": "Week 3",
           "dateRange": "Jan 20 - Jan 24, 2026",
-          "status": "planned",
+          "status": "complete",
           "title": "Glassmorphic Weather Dashboard",
           "description": "A visually stunning weather dashboard using the glassmorphism trend. Shows real-time data fetched from our wrapper.",
           "sections": {},
@@ -131,7 +131,7 @@
         {
           "weekNumber": "Week 4",
           "dateRange": "Jan 27 - Jan 31, 2026",
-          "status": "planned",
+          "status": "complete",
           "title": "Recipe API & Search",
           "description": "A complex data API allowing users to search recipes by ingredients. Utilizes advanced querying capabilities of Supabase.",
           "sections": {},
@@ -148,7 +148,7 @@
         {
           "weekNumber": "Week 4",
           "dateRange": "Jan 27 - Jan 31, 2026",
-          "status": "planned",
+          "status": "complete",
           "title": "Particle System Generator",
           "description": "A canvas-based generator for creating dynamic particle backgrounds. Users can export configurations for their own sites.",
           "sections": {},

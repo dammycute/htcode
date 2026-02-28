@@ -129,3 +129,17 @@ MIT License - feel free to use this for your own portfolio!
 ---
 
 Built with ❤️ by Damilola Olawoore (Ht-code)
+
+<!-- 
+I have completed all January Projects. I want to remove the monthly project based stuff now and have a fully portfolio website. 
+
+I was able to complete 3 project which I want to include in my portfolio. 
+
+1. https://rccg-providence-center.vercel.app/
+2. https://englefield-green-montessori.vercel.app/
+3. https://personal-website-five-gamma-70.vercel.app/
+
+
+1 is the website for a church, 2. is website for a school and 3 is a website portfolio for a brand designer. I built the whole thing with nextjs, mongodb, etc. 
+
+I want you to note that I dont work with nodejs or rabbitmq I work with celery instead. -->

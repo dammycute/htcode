@@ -16,8 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Ht-code - Portfolio & Projects",
-  description: "6 Months. Weekly Shipments. Building scalable backends and interactive frontends.",
+  title: "Ht-code | Damilola Olawoore - Fullstack Engineer",
+  description: "Damilola Olawoore's professional portfolio showcasing high-performance backend systems, scalable architectures, and modern web experiences.",
 };
 
 export default function RootLayout({ children }) {
