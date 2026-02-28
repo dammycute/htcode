@@ -298,7 +298,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-2">
                 <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">GitHub Copilot</span>
                 <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">ChatGPT</span>
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300"></span>
+                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">Claude</span>
               </div>
             </div>
           </div>
