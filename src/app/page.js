@@ -146,7 +146,7 @@ export default function Home() {
               Experiences.
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up delay-200 font-mono text-sm lg:text-base">
-              // Senior Software Engineer specializing in building scalable backends and high-performance web applications. Turning complex problems into elegant, efficient solutions.
+              // Software Engineer specializing in building scalable backends and high-performance web applications. Turning complex problems into elegant, efficient solutions.
             </p>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-4 animate-fade-in-up delay-300">
               <a className="group flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded font-bold transition-all hover:bg-primary-dark hover:scale-105 shadow-lg shadow-violet-500/20 font-mono text-sm" href="#projects">
