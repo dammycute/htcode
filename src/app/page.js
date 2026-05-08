@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import WeeklyLogSection from '@/components/WeeklyLogSection';
 import WorkExperienceSection from '@/components/WorkExperienceSection';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,6 +51,7 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <a href="/Damilola-Olawoore-Resume.pdf" download className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-violet-900/20 font-mono">
               <span>Resume.pdf</span>
               <span className="material-symbols-outlined text-sm">download</span>
@@ -74,9 +75,12 @@ export default function Home() {
       <div className={`fixed inset-0 bg-white dark:bg-slate-950 z-[9999] flex flex-col transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800/50">
           <span className="font-mono font-bold text-primary tracking-widest text-sm">MENU</span>
-          <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-            <span className="material-symbols-outlined">close</span>
-          </button>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+              <span className="material-symbols-outlined">close</span>
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col p-8 gap-1 flex-1 overflow-y-auto bg-white dark:bg-slate-950">
@@ -146,7 +150,7 @@ export default function Home() {
               Experiences.
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up delay-200 font-mono text-sm lg:text-base">
-              // Software Engineer specializing in building scalable backends and high-performance web applications. Turning complex problems into elegant, efficient solutions.
+              {`// Software Engineer specializing in building scalable backends and high-performance web applications. Turning complex problems into elegant, efficient solutions.`}
             </p>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-4 animate-fade-in-up delay-300">
               <a className="group flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded font-bold transition-all hover:bg-primary-dark hover:scale-105 shadow-lg shadow-violet-500/20 font-mono text-sm" href="#projects">
@@ -184,31 +188,31 @@ export default function Home() {
                 </div>
                 <div className="flex">
                   <span className="text-slate-600 select-none w-8 text-right mr-4">2</span>
-                  <span className="ml-4"><span className="text-blue-400">"name"</span>: <span className="text-green-400">"Damilola Olawoore"</span>,</span>
+                  <span className="ml-4"><span className="text-blue-400">{`"name"`}</span>: <span className="text-green-400">{`"Damilola Olawoore"`}</span>,</span>
                 </div>
                 <div className="flex">
                   <span className="text-slate-600 select-none w-8 text-right mr-4">3</span>
-                  <span className="ml-4"><span className="text-blue-400">"focus"</span>: <span className="text-yellow-400">"Scalable Backends"</span>,</span>
+                  <span className="ml-4"><span className="text-blue-400">{`"focus"`}</span>: <span className="text-yellow-400">{`"Scalable Backends"`}</span>,</span>
                 </div>
                 <div className="flex">
                   <span className="text-slate-600 select-none w-8 text-right mr-4">4</span>
-                  <span className="ml-4"><span className="text-blue-400">"core_tech"</span>: [</span>
+                  <span className="ml-4"><span className="text-blue-400">{`"core_tech"`}</span>: [</span>
                 </div>
                 <div className="flex">
                   <span className="text-slate-600 select-none w-8 text-right mr-4">5</span>
-                  <span className="ml-8"><span className="text-green-400">"Python / Django"</span>,</span>
+                  <span className="ml-8"><span className="text-green-400">{`"Python / Django"`}</span>,</span>
                 </div>
                 <div className="flex">
                   <span className="text-slate-600 select-none w-8 text-right mr-4">6</span>
-                  <span className="ml-8"><span className="text-green-400">"Next.js / React"</span>,</span>
+                  <span className="ml-8"><span className="text-green-400">{`"Next.js / React"`}</span>,</span>
                 </div>
                 <div className="flex">
                   <span className="text-slate-600 select-none w-8 text-right mr-4">7</span>
-                  <span className="ml-8"><span className="text-green-400">"MongoDB / PostgreSQL"</span>,</span>
+                  <span className="ml-8"><span className="text-green-400">{`"MongoDB / PostgreSQL"`}</span>,</span>
                 </div>
                 <div className="flex">
                   <span className="text-slate-600 select-none w-8 text-right mr-4">8</span>
-                  <span className="ml-8"><span className="text-green-400">"Celery / Redis"</span></span>
+                  <span className="ml-8"><span className="text-green-400">{`"Celery / Redis"`}</span></span>
                 </div>
                 <div className="flex">
                   <span className="text-slate-600 select-none w-8 text-right mr-4">9</span>
@@ -321,9 +325,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 relative">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">The "Build Fast" Philosophy</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6">Engineering for Impact</h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                I believe the best way to master backend engineering is by building. That's why I've committed to launching a new project every week while working on complex decentralized systems.
+                {`I specialize in building high-performance, scalable systems that solve real-world problems. My approach combines deep technical expertise with a focus on clean architecture and seamless user experiences.`}
               </p>
               <div className="space-y-6">
                 <div className="flex gap-4">
@@ -354,19 +358,19 @@ export default function Home() {
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   <span className="ml-auto text-xs text-slate-500">terminal - zsh</span>
                 </div>
-                <p className="mb-4">
-                  <span className="text-green-400">➜</span> <span className="text-blue-400">~</span> cat current_focus.json<br />
-                  {"{"}<br />
-                  <span className="pl-4">"role": "Fullstack Engineer",</span><br />
-                  <span className="pl-4">"focus": "Scalable Systems & Premium UI",</span><br />
-                  <span className="pl-4">"stack": {"{"}</span><br />
-                  <span className="pl-8">"backend": ["Python", "Django", "Celery"],</span><br />
-                  <span className="pl-8">"frontend": ["Next.js", "React", "Tailwind"],</span><br />
-                  <span className="pl-8">"database": ["PostgreSQL", "MongoDB", "Redis"]</span><br />
-                  <span className="pl-4">{"}"},</span><br />
-                  <span className="pl-4">"interests": ["System Architecture", "AI Integration"]</span><br />
-                  {"}"}
-                </p>
+                <div className="mb-4">
+                  <p><span className="text-green-400">➜</span> <span className="text-blue-400">~</span> cat current_focus.json</p>
+                  <p>{"{"}</p>
+                  <p className="pl-4">{`"role": "Fullstack Engineer",`}</p>
+                  <p className="pl-4">{`"focus": "Scalable Systems & Premium UI",`}</p>
+                  <p className="pl-4">{`"stack": {`}</p>
+                  <p className="pl-8">{`"backend": ["Python", "Django", "Celery"],`}</p>
+                  <p className="pl-8">{`"frontend": ["Next.js", "React", "Tailwind"],`}</p>
+                  <p className="pl-8">{`"database": ["PostgreSQL", "MongoDB", "Redis"]`}</p>
+                  <p className="pl-4">{`},`}</p>
+                  <p className="pl-4">{`"interests": ["System Architecture", "AI Integration"]`}</p>
+                  <p>{"}"}</p>
+                </div>
                 <p className="mb-2">
                   <span className="text-green-400">➜</span> <span className="text-blue-400">~</span> <span className="animate-pulse">_</span>
                 </p>
@@ -384,7 +388,7 @@ export default function Home() {
           </div>
           <h2 className="text-4xl lg:text-5xl font-black mb-6 tracking-tight">Got a project in mind?</h2>
           <p className="text-xl text-slate-500 dark:text-slate-400 mb-12 max-w-xl mx-auto font-mono text-base">
-            Whether it's a scalable backend architecture, a high-performance web app, or a complex system integration, let's build it together.
+            {`Whether it's a scalable backend architecture, a high-performance web app, or a complex system integration, let's build it together.`}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
             <a className="inline-flex items-center justify-center gap-3 bg-primary text-white text-lg font-bold px-8 py-4 rounded hover:bg-primary-dark transition-all shadow-xl shadow-violet-900/20 font-mono" href="mailto:damilolaolawoore@gmail.com">
