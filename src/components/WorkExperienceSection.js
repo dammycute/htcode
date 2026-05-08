@@ -99,7 +99,7 @@ export default function WorkExperienceSection() {
 
                                     {project.caseStudy && (
                                         <Link
-                                            href={`/case-study/work/${index}`}
+                                            href={`/case-study/projects/${index}`}
                                             className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline underline-offset-4"
                                         >
                                             View Case Study <span className="material-symbols-outlined text-sm">auto_graph</span>
