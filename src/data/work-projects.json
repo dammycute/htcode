@@ -11,15 +11,13 @@
         "tags": [
             "Community",
             "NextJS",
-            "MongoDB",
-            "Celery"
+            "MongoDB"
         ],
         "techStack": [
             "Next.js",
             "MongoDB",
             "Tailwind CSS",
-            "Framer Motion",
-            "Celery"
+            "Framer Motion"
         ],
         "demo": "https://www.rccgprovidencecentre.org",
         "confidential": false,
@@ -40,10 +38,6 @@
                 {
                     "label": "Database",
                     "value": "MongoDB"
-                },
-                {
-                    "label": "Tasks",
-                    "value": "Celery"
                 }
             ],
             "strengths": [
@@ -65,14 +59,12 @@
         "tags": [
             "Education",
             "NextJS",
-            "MongoDB",
-            "Celery"
+            "MongoDB"
         ],
         "techStack": [
             "Next.js",
             "MongoDB",
-            "Tailwind CSS",
-            "Celery"
+            "Tailwind CSS"
         ],
         "demo": "https://www.egmos.org.uk",
         "confidential": false,
@@ -94,10 +86,6 @@
                 {
                     "label": "DB",
                     "value": "MongoDB"
-                },
-                {
-                    "label": "Tasks",
-                    "value": "Celery"
                 }
             ],
             "strengths": [
@@ -120,15 +108,12 @@
             "Branding",
             "Portfolio",
             "NextJS",
-            "MongoDB",
-            "Celery"
+            "MongoDB"
         ],
         "techStack": [
             "Next.js",
             "MongoDB",
-            "Tailwind CSS",
-            "GSAP",
-            "Celery"
+            "Tailwind CSS"
         ],
         "demo": "https://www.oluwaseyi.ng",
         "confidential": false,
@@ -150,10 +135,6 @@
                 {
                     "label": "Conversion",
                     "value": "Optimized"
-                },
-                {
-                    "label": "Tasks",
-                    "value": "Celery"
                 }
             ],
             "strengths": [
@@ -282,5 +263,32 @@
                 "Implement offline persistence"
             ]
         }
+    },
+    {
+        "id": "color-flood",
+        "title": "Color Flood — Multiplayer Puzzle Game",
+        "company": "Personal Project",
+        "category": "GAME",
+        "role": "Fullstack Developer",
+        "dateRange": "2025",
+        "status": "complete",
+        "description": "A real-time multiplayer color flood puzzle game built with Next.js and Supabase. Players compete to fill the board with a single color by making strategic moves. Features solo practice mode and real-time multiplayer with WebSockets.",
+        "tags": [
+            "Game",
+            "NextJS",
+            "Supabase",
+            "Real-time",
+            "Multiplayer"
+        ],
+        "techStack": [
+            "Next.js",
+            "Supabase",
+            "WebSockets",
+            "Tailwind CSS",
+            "TypeScript"
+        ],
+        "demo": "https://color-fill-game.vercel.app",
+        "github": "https://github.com/dammycute/color-fill-game.git",
+        "confidential": false
     }
 ]

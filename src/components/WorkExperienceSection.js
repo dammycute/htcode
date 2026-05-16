@@ -26,6 +26,7 @@ export default function WorkExperienceSection() {
             case 'EDTECH': return 'school';
             case 'FULLSTACK': return 'web';
             case 'WEB3': return 'shield_lock';
+            case 'GAME': return 'stadia_controller';
             default: return 'code';
         }
     };
