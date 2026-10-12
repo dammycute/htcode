@@ -7,6 +7,7 @@ export const site = {
   email: 'damilolaolawoore03@gmail.com',
   resume: '/Damilola-Olawoore-Resume.pdf',
   colorFlood: 'https://color-fill-game.vercel.app',
+  photo: '/me-studio.jpg',
   socials: [
     { label: 'GitHub', href: 'https://github.com/dammycute' },
     { label: 'X', href: 'https://x.com/ht__code' },
@@ -15,8 +16,8 @@ export const site = {
 };
 
 export const nav = [
-  { id: 'experience', label: 'Experience' },
   { id: 'work', label: 'Work' },
+  { id: 'experience', label: 'Experience' },
   { id: 'capabilities', label: 'Skills' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },

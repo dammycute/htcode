@@ -66,7 +66,7 @@ export default function Hero() {
         <div>
           <motion.p {...fadeUp(0.1)} className="tabular flex items-center gap-2.5 text-sm text-ink-2">
             <span className="pulse-dot size-2 rounded-full bg-accent" aria-hidden="true" />
-            Taking on new projects
+            Open to backend and full-stack roles · remote
           </motion.p>
           <SplitText
             as="h1"
@@ -83,7 +83,7 @@ export default function Hero() {
 
         <div className="mt-20 grid items-end gap-10 md:grid-cols-12">
           <motion.p {...fadeUp(1.0)} className="text-lg leading-relaxed text-ink-2 sm:text-xl md:col-span-5">
-            I’m a full-stack and backend developer based in Ibadan, Nigeria. Right now I ship production features for CVtoCareer, a career advisory platform used by real clients.
+            I’m Damilola, a backend and full-stack developer in Ibadan, Nigeria, looking for a remote role. I ship production features for CVtoCareer, a career advisory platform used by real clients.
           </motion.p>
 
           <motion.dl {...fadeUp(1.1)} className="tabular grid grid-cols-2 gap-6 md:col-span-3 md:col-start-7">
@@ -103,7 +103,7 @@ export default function Hero() {
                 See the work
               </a>
             </Magnetic>
-            <a href={site.colorFlood} target="_blank" rel="noopener noreferrer" className="link-line">Play Color Flood</a>
+            <a href={site.resume} download className="link-line">Download résumé</a>
           </motion.div>
         </div>
       </motion.div>

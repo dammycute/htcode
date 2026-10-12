@@ -4,7 +4,7 @@ import './globals.css';
 import Shell from '@/components/Shell';
 
 const description =
-  'Damilola Olawoore is a full-stack and backend developer in Ibadan, Nigeria, building APIs, data-driven systems and Next.js applications.';
+  'Damilola Olawoore is a full-stack and backend developer in Ibadan, Nigeria, building APIs, data-driven systems and Next.js applications. Open to remote backend and full-stack roles.';
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),

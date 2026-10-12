@@ -2,6 +2,7 @@ import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
+import AboutPhoto from '@/components/AboutPhoto';
 import Reveal from '@/components/Reveal';
 import WorkStack from '@/components/WorkStack';
 import Marquee from '@/components/fx/Marquee';
@@ -11,12 +12,19 @@ import Magnetic from '@/components/fx/Magnetic';
 import { capabilities, experience, getProjects, site } from '@/lib/site';
 
 const profile = [
-  ['role', 'Full-stack / backend developer'],
-  ['location', site.location],
-  ['now', 'CVtoCareer, Kreva & Co.'],
-  ['languages', 'TypeScript, JavaScript, Python'],
-  ['stack', 'Node, Django, Next.js, PostgreSQL'],
+  ['role', 'Backend / full-stack developer'],
+  ['based in', site.location],
+  ['looking for', 'Remote roles, worldwide'],
+  ['now at', 'CVtoCareer, Kreva & Co.'],
+  ['stack', 'TypeScript, Node, Django, Next.js, PostgreSQL'],
   ['education', 'B.Eng. Industrial and Production Engineering, FUTA (2024)'],
+];
+
+const howIWork = [
+  ['I own features end to end.', 'At CVtoCareer I delivered the Missing Info feature from the staff backend and expiry cron job to the audit trail and the customer review flow.'],
+  ['I treat data carefully.', 'Email and phone lookups go through hash-based helpers, PII fields are encrypted, every lifecycle action is logged, and I’ve integrated PayPal and Paystack payments.'],
+  ['I care about the result.', 'I’ve reached a 95+ PageSpeed score, cut page load times by 28% and reduced login response times by 60%.'],
+  ['I use AI where it helps.', 'AI assistants speed up my development and debugging, and I’ve built LLM job classification into a production pipeline.'],
 ];
 
 export default function Home() {
@@ -28,6 +36,14 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Marquee />
+
+        <section id="work" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
+          <div className="mb-14 flex items-end justify-between gap-6">
+            <SplitText as="h2" className="display text-6xl sm:text-8xl" parts={[{ text: 'Selected' }, { text: 'work', accent: true }]} />
+            <ScrambleText text="2023 → now" className="tabular hidden pb-3 text-sm text-ink-3 sm:block" />
+          </div>
+          <WorkStack projects={projects} />
+        </section>
 
         <section id="experience" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
           <SplitText as="h2" className="display mb-14 text-6xl sm:text-8xl" parts={[{ text: 'Where I’ve' }, { text: 'worked', accent: true }]} />
@@ -56,14 +72,6 @@ export default function Home() {
               </Reveal>
             ))}
           </ol>
-        </section>
-
-        <section id="work" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
-          <div className="mb-14 flex items-end justify-between gap-6">
-            <SplitText as="h2" className="display text-6xl sm:text-8xl" parts={[{ text: 'Selected' }, { text: 'work', accent: true }]} />
-            <ScrambleText text="2023 → now" className="tabular hidden pb-3 text-sm text-ink-3 sm:block" />
-          </div>
-          <WorkStack projects={projects} />
         </section>
 
         <section id="capabilities" className="border-y border-line bg-paper-2">
@@ -101,23 +109,40 @@ export default function Home() {
           <SplitText
             as="h2"
             className="display max-w-5xl text-[clamp(3rem,9vw,8rem)]"
-            parts={[{ text: 'Engineering for' }, { text: 'impact.', accent: true }]}
+            parts={[{ text: 'Hi, I’m' }, { text: 'Damilola.', accent: true }]}
           />
-          <div className="mt-20 grid gap-12 md:grid-cols-12">
-            <Reveal className="space-y-8 text-lg leading-relaxed md:col-span-6">
-              <p className="text-ink-2">
-                I’m a full-stack and backend developer with 3+ years of experience building web applications, APIs and data-driven systems. At CVtoCareer I work across four codebases (two Express/TypeScript backends and two Next.js frontends) on shared PostgreSQL and Redis.
-              </p>
-              <div>
-                <h3 className="font-medium">Careful with data</h3>
-                <p className="mt-2 text-ink-2">PII encryption, hash-based lookups and audit trails, and payment integrations with PayPal and Paystack.</p>
-              </div>
-              <div>
-                <h3 className="font-medium">Background work and AI</h3>
-                <p className="mt-2 text-ink-2">BullMQ and Celery job processing, plus LLM-based classification in production. I also use AI assistants to speed up development and debugging.</p>
-              </div>
+          <div className="mt-16 grid gap-14 md:grid-cols-12">
+            <Reveal className="md:col-span-4">
+              <AboutPhoto className="mx-auto max-w-xs md:max-w-none" />
             </Reveal>
-            <Reveal delay={0.1} className="md:col-span-5 md:col-start-8">
+
+            <div className="space-y-12 md:col-span-8">
+              <Reveal className="space-y-5 text-lg leading-relaxed text-ink-2 sm:text-xl">
+                <p>
+                  I studied Industrial and Production Engineering at the Federal University of Technology, Akure, but I’ve been building software since 2022, when I joined Zuri Team as a full-stack intern.
+                </p>
+                <p>
+                  Since then I’ve built dashboards, a B2B marketplace, the backend of a multi-chain crypto wallet and features for a career platform used by real clients. I’m now looking for a backend or full-stack role with a remote team.
+                </p>
+              </Reveal>
+
+              <Reveal>
+                <h3 className="tabular text-sm text-ink-3">how I work</h3>
+                <ol className="mt-4 divide-y divide-line border-y border-line">
+                  {howIWork.map(([title, body], i) => (
+                    <li key={title} className="grid gap-x-6 gap-y-1 py-5 sm:grid-cols-[3rem_1fr]">
+                      <span className="tabular pt-0.5 text-sm text-accent">{String(i + 1).padStart(2, '0')}</span>
+                      <div>
+                        <p className="font-medium">{title}</p>
+                        <p className="mt-1 leading-relaxed text-ink-2">{body}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </Reveal>
+            </div>
+
+            <Reveal delay={0.1} className="md:col-span-8 md:col-start-5">
               <div className="overflow-hidden rounded-md border border-line bg-paper-2">
                 <div className="tabular flex items-center gap-2 border-b border-line px-4 py-2.5 text-xs text-ink-3">
                   <span className="size-2 rounded-full bg-accent" aria-hidden="true" /> profile.json
@@ -140,7 +165,7 @@ export default function Home() {
         <section id="contact" className="border-t border-line">
           <div className="mx-auto max-w-6xl px-5 py-32 sm:px-8">
             <Reveal>
-              <p className="tabular text-sm text-ink-3">got a project in mind?</p>
+              <p className="tabular text-sm text-ink-3">hiring for a backend or full-stack role?</p>
               <a
                 href={`mailto:${site.email}`}
                 aria-label={`Email ${site.email}`}
@@ -160,7 +185,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.1} className="mt-12 max-w-xl text-ink-2">
               <p className="leading-relaxed">
-                A backend, a web app or a tricky integration: tell me what you’re building and I’ll reply with how I’d approach it.
+                I’m open to remote backend and full-stack roles with teams anywhere in the world. Send me the role and a little about the team, and I’ll reply quickly.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 text-sm text-ink">
                 <Magnetic>
