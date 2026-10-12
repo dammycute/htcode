@@ -1,9 +1,7 @@
-import { Geist, Geist_Mono } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import './globals.css';
 import Shell from '@/components/Shell';
-
-const geist = Geist({ variable: '--font-geist', subsets: ['latin'], display: 'swap' });
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'], display: 'swap' });
 
 const description =
   'Damilola Olawoore is a full-stack and backend developer in Ibadan, Nigeria, building APIs, data-driven systems and Next.js applications.';
@@ -21,7 +19,7 @@ export const viewport = { themeColor: '#09090b' };
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} ${geistMono.variable}`}>
+      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <Shell>{children}</Shell>
       </body>
     </html>
