@@ -1,40 +1,26 @@
-import { Inter, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
-import { Providers } from "@/components/Providers";
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
+import './globals.css';
+import Shell from '@/components/Shell';
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
+const description =
+  'Damilola Olawoore is a full-stack and backend developer in Ibadan, Nigeria, building APIs, data-driven systems and Next.js applications. Open to remote backend and full-stack roles.';
 
 export const metadata = {
-  title: "Ht-code | Damilola Olawoore - Fullstack Engineer",
-  description: "Damilola Olawoore's professional portfolio showcasing high-performance backend systems, scalable architectures, and modern web experiences.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  title: { default: 'Damilola Olawoore | Full-stack and backend developer', template: '%s | Ht-code' },
+  description,
+  openGraph: { title: 'Damilola Olawoore | Full-stack and backend developer', description, type: 'website', siteName: 'Ht-code' },
+  twitter: { card: 'summary_large_image', title: 'Damilola Olawoore | Full-stack and backend developer', description },
 };
+
+export const viewport = { themeColor: '#09090b' };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-200`}
-      >
-        <Providers>
-          {children}
-        </Providers>
+    <html lang="en">
+      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+        <Shell>{children}</Shell>
       </body>
     </html>
   );
