@@ -1,99 +1,112 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Terminal from './Terminal';
+import { useEffect, useRef } from 'react';
+import { site } from '@/lib/site';
+import { motion, useScroll, useTransform } from 'motion/react';
+import HeroField from './fx/HeroField';
+import SplitText from './fx/SplitText';
+import Magnetic from './fx/Magnetic';
+import CountUp from './fx/CountUp';
+import { prefersReducedMotion, useBooted } from '@/lib/boot';
 
-const Hero = () => {
-    const terminalLines = [
-        { prefix: "➜", text: "cat developer_profile.json", color: "text-blue-400" },
-        { prefix: "", text: "{", color: "text-purple-400" },
-        { prefix: "", text: "  \"name\": \"Damilola Olawoore\",", color: "text-slate-300" },
-        { prefix: "", text: "  \"focus\": \"Scalable Backends\",", color: "text-yellow-400" },
-        { prefix: "", text: "  \"languages\": [\"Python\", \"TypeScript\", \"SQL\"],", color: "text-slate-300" },
-        { prefix: "", text: "  \"architecture\": \"Event-Driven\",", color: "text-green-400" },
-        { prefix: "", text: "  \"status\": \"Building the future\"", color: "text-slate-300" },
-        { prefix: "", text: "}", color: "text-purple-400" }
-    ];
+const PHRASES = ['AI job classification', 'background workers', 'secure APIs', 'payment integrations', 'things that ship'];
 
-    return (
-        <header className="relative min-h-[90vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12 bg-mesh">
-            {/* Dynamic Background Elements */}
-            <div className="aura-blob aura-primary"></div>
-            <div className="aura-blob aura-secondary" style={{ bottom: '10%', right: '10%' }}></div>
+function Typed() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (prefersReducedMotion()) {
+      el.textContent = PHRASES[0];
+      return;
+    }
+    let i = 0, j = 0, deleting = false, timer;
+    const tick = () => {
+      const phrase = PHRASES[i];
+      j += deleting ? -1 : 1;
+      el.textContent = phrase.slice(0, j);
+      let wait = deleting ? 28 : 60;
+      if (!deleting && j === phrase.length) {
+        deleting = true;
+        wait = 1500;
+      } else if (deleting && j === 0) {
+        deleting = false;
+        i = (i + 1) % PHRASES.length;
+        wait = 300;
+      }
+      timer = setTimeout(tick, wait);
+    };
+    timer = setTimeout(tick, 2200);
+    return () => clearTimeout(timer);
+  }, []);
+  return <span ref={ref} className="text-ink" />;
+}
 
-            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: "linear-gradient(to right, #334155 1px, transparent 1px), linear-gradient(to bottom, #334155 1px, transparent 1px)",
-                    backgroundSize: "4rem 4rem"
-                }}></div>
+export default function Hero() {
+  const root = useRef(null);
+  const booted = useBooted();
+  const { scrollYProgress } = useScroll({ target: root, offset: ['start start', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const fadeUp = (delay) => ({
+    initial: { opacity: 0, y: 24 },
+    animate: booted ? { opacity: 1, y: 0 } : {},
+    transition: { duration: 0.9, delay, ease: [0.2, 0.75, 0.2, 1] },
+  });
+
+  return (
+    <section ref={root} className="relative min-h-[100dvh] overflow-hidden">
+      <HeroField />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-paper to-transparent" />
+
+      <motion.div
+        style={{ y, opacity: fade }}
+        className="relative mx-auto flex min-h-[100dvh] max-w-6xl flex-col justify-between px-5 pb-14 pt-36 sm:px-8 sm:pt-44"
+      >
+        <div>
+          <motion.p {...fadeUp(0.1)} className="tabular flex items-center gap-2.5 text-sm text-ink-2">
+            <span className="pulse-dot size-2 rounded-full bg-accent" aria-hidden="true" />
+            Taking on new projects
+          </motion.p>
+          <SplitText
+            as="h1"
+            waitForBoot
+            delay={0.15}
+            className="display mt-8 text-[clamp(3.4rem,11.5vw,10.5rem)]"
+            parts={[{ text: 'Backend depth.' }, { br: true }, { text: 'Frontend care.', accent: true }]}
+          />
+          <motion.p {...fadeUp(0.9)} className="tabular mt-8 text-sm text-ink-3 sm:text-base">
+            <span className="text-accent">$</span> now building <Typed />
+            <span className="caret ml-1" />
+          </motion.p>
+        </div>
+
+        <div className="mt-20 grid items-end gap-10 md:grid-cols-12">
+          <motion.p {...fadeUp(1.0)} className="text-lg leading-relaxed text-ink-2 sm:text-xl md:col-span-5">
+            I’m a full-stack and backend developer based in Ibadan, Nigeria. Right now I ship production features for CVtoCareer, a career advisory platform used by real clients.
+          </motion.p>
+
+          <motion.dl {...fadeUp(1.1)} className="tabular grid grid-cols-2 gap-6 md:col-span-3 md:col-start-7">
+            <div>
+              <dd className="display text-5xl text-ink"><CountUp to={3} /></dd>
+              <dt className="mt-2 text-xs text-ink-3">years in production</dt>
             </div>
-
-            <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center w-full">
-                <div className="flex flex-col gap-8 text-center lg:text-left">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-bold w-fit mx-auto lg:mx-0 animate-fade-in-up">
-                        <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                        </span>
-                        AVAILABLE FOR NEW CHALLENGES
-                    </div>
-
-                    <div className="space-y-4">
-                        <h1 className="text-5xl lg:text-8xl font-black leading-[1] tracking-tight animate-fade-in-up delay-100">
-                            Building <br />
-                            <span className="text-gradient">Robust Systems.</span>
-                        </h1>
-                        <p className="text-lg lg:text-xl text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up delay-200 font-mono italic">
-              // Software Engineer specializing in backend architecture, AI integration, and high-performance web applications.
-                        </p>
-                    </div>
-
-                    <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-4 animate-fade-in-up delay-300">
-                        <a className="group relative flex items-center justify-center gap-3 bg-primary text-white px-8 py-4 rounded-lg font-bold transition-all hover:bg-primary-dark hover:scale-105 shadow-xl shadow-primary/20 font-mono text-sm overflow-hidden" href="#projects">
-                            <span className="relative z-10">EXPLORE WORK</span>
-                            <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform relative z-10">rocket_launch</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:animate-shimmer"></div>
-                        </a>
-                        <a className="flex items-center justify-center gap-2 bg-slate-800/50 backdrop-blur-sm text-white border border-white/10 px-8 py-4 rounded-lg font-bold transition-all hover:bg-slate-700 hover:border-primary/50 font-mono text-sm" href="#contact">
-                            GET IN TOUCH
-                        </a>
-                    </div>
-
-                    <div className="mt-8 flex flex-col gap-4 animate-fade-in-up delay-500">
-                        <span className="uppercase tracking-[0.2em] text-[10px] text-slate-500 font-bold font-mono">Core Stack</span>
-                        <div className="flex gap-6 opacity-60 flex-wrap justify-center lg:justify-start grayscale hover:grayscale-0 transition-all duration-500">
-                            <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded">Django</span>
-                            <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded">PostgreSQL</span>
-                            <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded">Redis</span>
-                            <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded">Next.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="hidden lg:block relative animate-fade-in-up delay-300">
-                    <Terminal lines={terminalLines} title="stack.config.json" />
-
-                    {/* Floating Stats Card */}
-                    <div className="absolute -bottom-8 -right-8 glass-card p-6 rounded-xl border border-white/10 shadow-2xl flex items-center gap-6 animate-float z-20">
-                        <div className="flex flex-col">
-                            <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest font-mono mb-1">Experience</span>
-                            <span className="text-2xl font-black text-primary font-mono leading-none">3+ Yrs</span>
-                        </div>
-                        <div className="h-10 w-[1px] bg-white/10"></div>
-                        <div className="flex flex-col">
-                            <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest font-mono mb-1">Efficiency</span>
-                            <span className="text-2xl font-black text-green-400 font-mono leading-none">99.9%</span>
-                        </div>
-                    </div>
-                </div>
+            <div>
+              <dd className="display text-5xl text-ink"><CountUp to={4} suffix="" /></dd>
+              <dt className="mt-2 text-xs text-ink-3">codebases shipped at CVtoCareer</dt>
             </div>
+          </motion.dl>
 
-            <a className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 hover:text-primary transition-colors animate-bounce cursor-pointer font-mono" href="#expertise">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Scroll Down</span>
-                <span className="material-symbols-outlined text-sm">keyboard_double_arrow_down</span>
-            </a>
-        </header>
-    );
-};
-
-export default Hero;
+          <motion.div {...fadeUp(1.2)} className="flex flex-wrap items-center gap-x-6 gap-y-4 text-sm md:col-span-3 md:justify-end">
+            <Magnetic>
+              <a href="#work" className="inline-block rounded-sm bg-accent px-5 py-3 font-medium text-accent-ink">
+                See the work
+              </a>
+            </Magnetic>
+            <a href={site.colorFlood} target="_blank" rel="noopener noreferrer" className="link-line">Play Color Flood</a>
+          </motion.div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}

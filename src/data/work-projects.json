@@ -1,294 +1,109 @@
 [
-    {
-        "id": "rccg-providence",
-        "title": "RCCG Providence Centre",
-        "company": "RCCG",
-        "category": "COMMUNITY",
-        "role": "Lead Fullstack Developer",
-        "dateRange": "2023 - Present",
-        "status": "complete",
-        "description": "A comprehensive web platform for RCCG Providence Centre, featuring community engagement tools, discipleship resources, and event management.",
-        "tags": [
-            "Community",
-            "NextJS",
-            "MongoDB"
-        ],
-        "techStack": [
-            "Next.js",
-            "MongoDB",
-            "Tailwind CSS",
-            "Framer Motion"
-        ],
-        "demo": "https://www.rccgprovidencecentre.org",
-        "confidential": false,
-        "caseStudy": {
-            "challenge": "Building a centralized hub for a growing religious community that requires real-time updates and seamless resource management.",
-            "architecture": [
-                "Next.js App Router for optimal SEO and performance",
-                "MongoDB for flexible content management",
-                "Celery for background tasks and automated notifications",
-                "Responsive UI tailored for diverse age groups"
-            ],
-            "implementation": "Designed with a focus on 'The Blessed Family Home' theme, utilizing warm, inviting color palettes and clear navigation to ensure accessibility for all community members.",
-            "metrics": [
-                {
-                    "label": "Platform",
-                    "value": "Next.js"
-                },
-                {
-                    "label": "Database",
-                    "value": "MongoDB"
-                }
-            ],
-            "strengths": [
-                "Intuitive content discovery",
-                "Scalable community features",
-                "Mobile-first engagement"
-            ]
-        }
-    },
-    {
-        "id": "egmos-school",
-        "title": "Englefield Green Montessori",
-        "company": "EGMOS",
-        "category": "EDUCATION",
-        "role": "Fullstack Developer",
-        "dateRange": "2023 - 2024",
-        "status": "complete",
-        "description": "A professional educational portal for Englefield Green Montessori School, providing parents and students with essential school information and curriculum details.",
-        "tags": [
-            "Education",
-            "NextJS",
-            "MongoDB"
-        ],
-        "techStack": [
-            "Next.js",
-            "MongoDB",
-            "Tailwind CSS"
-        ],
-        "demo": "https://www.egmos.org.uk",
-        "confidential": false,
-        "caseStudy": {
-            "challenge": "Creating a professional digital presence that reflects the Montessori philosophy while providing efficient communication channels for parents.",
-            "architecture": [
-                "Server-side rendering for curriculum documentation",
-                "Inquiry management system with Celery background workers",
-                "Secure parent portal architecture",
-                "Highly accessible and responsive design"
-            ],
-            "implementation": "Leveraged a clean, professional aesthetic that emphasizes trust and educational excellence. Built an automated inquiry processing pipeline using Celery to ensure timely responses.",
-            "codeSnippet": "// Inquiry processing logic\nconst handleInquiry = async (data) => {\n  const res = await fetch('/api/inquiry', { method: 'POST', body: JSON.stringify(data) });\n  return res.json();\n}",
-            "metrics": [
-                {
-                    "label": "UX Score",
-                    "value": "Premium"
-                },
-                {
-                    "label": "DB",
-                    "value": "MongoDB"
-                }
-            ],
-            "strengths": [
-                "Clear information hierarchy",
-                "Automated parent outreach",
-                "Professional brand alignment"
-            ]
-        }
-    },
-    {
-        "id": "seyi-portfolio",
-        "title": "Brand Designer Portfolio",
-        "company": "Seyi Sorinade",
-        "category": "PORTFOLIO",
-        "role": "Fullstack Developer",
-        "dateRange": "2024",
-        "status": "complete",
-        "description": "A premium portfolio for a Brand Strategist and UI/UX Designer, featuring high-fidelity brand studies and service booking integration.",
-        "tags": [
-            "Branding",
-            "Portfolio",
-            "NextJS",
-            "MongoDB"
-        ],
-        "techStack": [
-            "Next.js",
-            "MongoDB",
-            "Tailwind CSS"
-        ],
-        "demo": "https://www.oluwaseyi.ng",
-        "confidential": false,
-        "caseStudy": {
-            "challenge": "Translating a 'brand strategist' identity into a performance-driven web experience that converts visitors into consultation bookings.",
-            "architecture": [
-                "Story-driven UX architecture",
-                "Custom booking logic powered by Celery tasks",
-                "Dynamic case study engine with MongoDB",
-                "High-performance asset loading strategies"
-            ],
-            "implementation": "Implemented 'Aligning Purpose with Impact' theme using sleek typography and minimalist design. Used Celery to handle automated follow-up sequences for consultation bookings.",
-            "codeSnippet": "// Smooth scroll to section\nconst scrollTo = (id) => {\n  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });\n};",
-            "metrics": [
-                {
-                    "label": "Design",
-                    "value": "Strategic"
-                },
-                {
-                    "label": "Conversion",
-                    "value": "Optimized"
-                }
-            ],
-            "strengths": [
-                "Narrative-driven flow",
-                "Seamless booking integration",
-                "High-end visual polish"
-            ]
-        }
-    },
-    {
-        "id": "notification-service",
-        "title": "Robust Multi-Channel Notification Engine",
-        "company": "Personal Project",
-        "category": "BACKEND / FULLSTACK",
-        "role": "Lead Fullstack Developer",
-        "dateRange": "2024",
-        "status": "complete",
-        "description": "A high-performance notification delivery system capable of handling thousands of background tasks. Features a premium React dashboard with real-time status tracking and manual retry logic.",
-        "tags": [
-            "DistributedSystems",
-            "FullStack",
-            "SystemDesign",
-            "Celery"
-        ],
-        "techStack": [
-            "Django",
-            "React",
-            "Celery",
-            "Redis",
-            "WebSockets",
-            "REST API"
-        ],
-        "github": "https://github.com/dammycute/notification-service.git",
-        "confidential": false,
-        "caseStudy": {
-            "challenge": "Ensuring high-latency tasks (like email delivery) don't block the main application thread while providing users with real-time feedback on delivery status.",
-            "architecture": [
-                "Distributed task architecture using Celery and Redis",
-                "RESTful API design for cross-platform integration",
-                "Responsive Glassmorphic frontend layout",
-                "Event-driven state updates via polling and status broadcasting"
-            ],
-            "implementation": "Built with a dual-pane React architecture. The backend uses a producer-consumer model where the API produces tasks and independent Celery workers consume them, ensuring a non-blocking UI.",
-            "codeSnippet": "// Action to re-trigger failed notifications\n@action(detail=True, methods=['post'])\ndef retry(self, request, pk=None):\n    notification = self.get_object()\n    if notification.status == Notification.STATUS_FAILED:\n        notification.status = Notification.STATUS_PENDING\n        notification.save()\n        send_notification_task.delay(notification.id)\n        return Response({'status': 'retry triggered'})",
-            "metrics": [
-                {
-                    "label": "Delivery Channels",
-                    "value": "2"
-                },
-                {
-                    "label": "UI Design",
-                    "value": "Glassmorphism"
-                },
-                {
-                    "label": "Sync Speed",
-                    "value": "Real-time"
-                }
-            ],
-            "strengths": [
-                "Decoupled background processing",
-                "Premium dark-mode aesthetics",
-                "Self-healing retry mechanisms"
-            ],
-            "improvements": [
-                "Implement SMS delivery channel",
-                "Add user authentication & permissions"
-            ]
-        }
-    },
-    {
-        "id": "secure-todo-app",
-        "title": "Secure Todo Full-Stack App",
-        "company": "Personal Project",
-        "category": "FULLSTACK",
-        "role": "Lead Developer",
-        "dateRange": "2023",
-        "status": "complete",
-        "description": "A high-performance full-stack application with production-ready security, row-level authorization, and a responsive frontend.",
-        "tags": [
-            "Security",
-            "Fullstack",
-            "Python",
-            "React"
-        ],
-        "techStack": [
-            "Django",
-            "DRF",
-            "React",
-            "PostgreSQL",
-            "JWT"
-        ],
-        "github": "https://github.com/dammycute/todoapp.git",
-        "frontend_github": "https://github.com/dammycute/todo-frontend.git",
-        "confidential": false,
-        "caseStudy": {
-            "challenge": "Ensuring strict data isolation between users while maintaining low latency and a seamless frontend experience.",
-            "architecture": [
-                "Stateless JWT Authentication",
-                "Row-Level Authorization Layer",
-                "Decoupled React Frontend",
-                "Optimized SQL Queries"
-            ],
-            "implementation": "The backend uses DRF with a custom permission layer to scope all CRUD actions to the authenticated user. The frontend leverages Axios interceptors for secure token management.",
-            "codeSnippet": "def get_queryset(self):\n    return Todo.objects.filter(owner=self.request.user)",
-            "metrics": [
-                {
-                    "label": "Security",
-                    "value": "L3"
-                },
-                {
-                    "label": "API Speed",
-                    "value": "Sub-100ms"
-                },
-                {
-                    "label": "Auth",
-                    "value": "JWT"
-                }
-            ],
-            "strengths": [
-                "Secure data isolation",
-                "Intuitive Task Management UI",
-                "Production-ready auth flow"
-            ],
-            "improvements": [
-                "Add Real-time notifications",
-                "Implement offline persistence"
-            ]
-        }
-    },
-    {
-        "id": "color-flood",
-        "title": "Color Flood — Multiplayer Puzzle Game",
-        "company": "Personal Project",
-        "category": "GAME",
-        "role": "Fullstack Developer",
-        "dateRange": "2025",
-        "status": "complete",
-        "description": "A real-time multiplayer color flood puzzle game built with Next.js and Supabase. Players compete to fill the board with a single color by making strategic moves. Features solo practice mode and real-time multiplayer with WebSockets.",
-        "tags": [
-            "Game",
-            "NextJS",
-            "Supabase",
-            "Real-time",
-            "Multiplayer"
-        ],
-        "techStack": [
-            "Next.js",
-            "Supabase",
-            "WebSockets",
-            "Tailwind CSS",
-            "TypeScript"
-        ],
-        "demo": "https://color-fill-game.vercel.app",
-        "github": "https://github.com/dammycute/color-fill-game.git",
-        "confidential": false
+  {
+    "id": "rccg-providence",
+    "title": "RCCG Providence Centre",
+    "company": "Kreva & Co.",
+    "role": "Lead Fullstack Developer",
+    "dateRange": "2026",
+    "description": "Church management system for RCCG Providence Centre, with a secure admin portal, donation tracking and contact management.",
+    "techStack": ["Next.js", "React", "MongoDB"],
+    "demo": "https://www.rccgprovidencecentre.org",
+    "image": "/projects/rccg-providence.jpg"
+  },
+  {
+    "id": "egmos-school",
+    "title": "Englefield Green Montessori",
+    "company": "Kreva & Co.",
+    "role": "Fullstack Developer",
+    "dateRange": "2026",
+    "description": "Full-stack platform for Englefield Green Montessori School, with a JWT-secured admin dashboard for school news, term dates and the student gallery.",
+    "techStack": ["Next.js", "React", "MongoDB", "JWT"],
+    "demo": "https://www.egmos.org.uk",
+    "image": "/projects/egmos-home.jpg"
+  },
+  {
+    "id": "seyi-portfolio",
+    "title": "Brand designer portfolio",
+    "company": "Seyi Sorinade",
+    "role": "Fullstack Developer",
+    "dateRange": "2026",
+    "description": "Portfolio and booking site for brand strategist and designer Seyi Sorinade.",
+    "techStack": ["Next.js", "MongoDB", "Tailwind CSS"],
+    "demo": "https://www.oluwaseyi.ng",
+    "image": "/projects/seyi-portfolio.jpg",
+    "caseStudy": {
+      "overview": "A personal site for a brand strategist and UI/UX designer. It presents his services and past work and lets visitors book a free consultation.",
+      "built": [
+        "A work section filterable by client type: non-profits, startups, personal brands, small businesses and agencies",
+        "Project entries that link out to the designer's Dribbble shots",
+        "A services list, an about section, FAQs and a testimonial block",
+        "Consultation booking through an external Calendly page",
+        "Social links to Instagram, X, LinkedIn, Behance and Dribbble"
+      ]
     }
+  },
+  {
+    "id": "notification-service",
+    "title": "Notification service",
+    "company": "Personal project",
+    "role": "Developer",
+    "dateRange": "2024",
+    "description": "A multi-channel notification service with a React dashboard. Delivery runs in background workers so the API stays responsive.",
+    "techStack": ["Django", "Django REST Framework", "Celery", "Redis", "React", "Vite"],
+    "github": "https://github.com/dammycute/notification-service.git",
+    "caseStudy": {
+      "overview": "Sending an email takes long enough that it should not block the request that asked for it. This project hands delivery to Celery workers and tracks each notification's status so a dashboard can show what happened.",
+      "built": [
+        "A Django REST API to create, list and retrieve notifications",
+        "Celery workers that deliver notifications in the background, backed by Redis",
+        "Email and WebSocket delivery channels",
+        "Statuses that move from pending to processing to sent or failed",
+        "A manual retry endpoint for failed notifications",
+        "A React and Vite dashboard with dark mode and a responsive layout"
+      ]
+    }
+  },
+  {
+    "id": "secure-todo-app",
+    "title": "Todo app",
+    "company": "Personal project",
+    "role": "Developer",
+    "dateRange": "2023",
+    "description": "A todo REST API built with Django REST Framework, with a separate React frontend.",
+    "techStack": ["Django", "Django REST Framework", "React", "Vite"],
+    "github": "https://github.com/dammycute/todoapp.git",
+    "frontend_github": "https://github.com/dammycute/todo-frontend.git",
+    "caseStudy": {
+      "overview": "An early full-stack practice project: a Django REST API with its own authentication app, and a React frontend built with Vite and set up for Netlify.",
+      "built": [
+        "A Django REST Framework API for todos",
+        "A separate authentication app in the backend",
+        "A React and Vite frontend in its own repository"
+      ]
+    }
+  },
+  {
+    "id": "color-flood",
+    "title": "Color Flood",
+    "company": "Personal project",
+    "role": "Developer",
+    "dateRange": "2026",
+    "description": "A multiplayer, real-time color flood puzzle game. Players join a room, race through levels and see a live leaderboard.",
+    "techStack": ["Next.js", "Supabase", "Realtime", "Tailwind CSS"],
+    "demo": "https://color-fill-game.vercel.app",
+    "image": "/projects/color-flood.jpg",
+    "github": "https://github.com/dammycute/color-fill-game.git",
+    "caseStudy": {
+      "overview": "A flood-fill puzzle where you turn the whole board one color in as few moves as possible. Rooms let friends play the same levels and compare scores as they go.",
+      "built": [
+        "Rooms with 6-character codes, shareable by link or code",
+        "Unique usernames within each room",
+        "A live leaderboard that updates through Supabase Realtime",
+        "Many levels, with the board growing from 6x6 upward",
+        "Rooms that expire after 60 days, cleaned up by a pg_cron job in Supabase",
+        "A room creator who can close the room and send everyone out",
+        "A mobile-friendly layout and a splash screen"
+      ]
+    }
+  }
 ]

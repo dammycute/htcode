@@ -1,423 +1,184 @@
-'use client';
+import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Hero from '@/components/Hero';
+import Reveal from '@/components/Reveal';
+import WorkStack from '@/components/WorkStack';
+import Marquee from '@/components/fx/Marquee';
+import SplitText from '@/components/fx/SplitText';
+import ScrambleText from '@/components/fx/ScrambleText';
+import Magnetic from '@/components/fx/Magnetic';
+import { capabilities, experience, getProjects, site } from '@/lib/site';
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import WorkExperienceSection from '@/components/WorkExperienceSection';
-import ThemeToggle from '@/components/ThemeToggle';
+const profile = [
+  ['role', 'Full-stack / backend developer'],
+  ['location', site.location],
+  ['now', 'CVtoCareer, Kreva & Co.'],
+  ['languages', 'TypeScript, JavaScript, Python'],
+  ['stack', 'Node, Django, Next.js, PostgreSQL'],
+  ['education', 'B.Eng. Industrial and Production Engineering, FUTA (2024)'],
+];
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'Expertise', href: '#expertise', type: 'anchor' },
-    { name: 'Work', href: '#projects', type: 'anchor' },
-    { name: 'About', href: '#about', type: 'anchor' },
-    { name: 'Contact', href: '#contact', type: 'anchor' },
-  ];
+  const projects = getProjects();
 
   return (
-    <div className="min-h-screen bg-background-light dark:bg-background-dark overflow-x-hidden">
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 backdrop-blur-md ${scrolled ? 'py-3 bg-white/90 dark:bg-background-dark/90 border-b border-gray-200 dark:border-slate-800 shadow-sm' : 'py-5 bg-transparent border-b border-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between w-full">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group cursor-pointer">
-            <div className="relative w-8 h-8 flex items-center justify-center bg-primary rounded text-white font-mono font-bold text-lg">
-              &gt;_
-            </div>
-            <span className="text-xl font-bold tracking-tight font-mono">
-              &lt;Ht-<span className="text-primary">code</span>/&gt;
-            </span>
-          </Link>
+    <>
+      <Header home />
+      <main id="main">
+        <Hero />
+        <Marquee />
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8 bg-white/5 dark:bg-slate-800/50 px-6 py-2 rounded border border-gray-200 dark:border-white/5">
-            {navLinks.map((link) => (
-              link.type === 'link' ? (
-                <Link key={link.name} className="text-sm font-medium hover:text-primary transition-colors font-mono" href={link.href}>{link.name}</Link>
-              ) : (
-                <a key={link.name} className="text-sm font-medium hover:text-primary transition-colors font-mono" href={link.href}>{link.name}</a>
-              )
+        <section id="experience" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
+          <SplitText as="h2" className="display mb-14 text-6xl sm:text-8xl" parts={[{ text: 'Where I’ve' }, { text: 'worked', accent: true }]} />
+          <ol>
+            {experience.map((job, i) => (
+              <Reveal key={job.company + job.dates} as="li" delay={(i % 2) * 0.05}>
+                <div className="group grid gap-x-8 gap-y-3 border-t border-line py-9 last:border-b md:grid-cols-12">
+                  <div className="tabular text-sm text-ink-3 md:col-span-3">
+                    <p className="transition-colors group-hover:text-accent">{job.dates}</p>
+                    <p className="mt-1">{job.place}</p>
+                  </div>
+                  <div className="md:col-span-9">
+                    <h3 className="text-2xl font-medium tracking-tight sm:text-3xl">
+                      {job.role} <span className="text-ink-3">·</span> <span className="text-accent">{job.company}</span>
+                    </h3>
+                    <ul className="mt-5 space-y-3 text-ink-2">
+                      {job.points.map((pt) => (
+                        <li key={pt} className="flex gap-3 leading-relaxed">
+                          <span className="tabular mt-0.5 text-accent" aria-hidden="true">→</span>
+                          {pt}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Reveal>
             ))}
+          </ol>
+        </section>
+
+        <section id="work" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
+          <div className="mb-14 flex items-end justify-between gap-6">
+            <SplitText as="h2" className="display text-6xl sm:text-8xl" parts={[{ text: 'Selected' }, { text: 'work', accent: true }]} />
+            <ScrambleText text="2023 → now" className="tabular hidden pb-3 text-sm text-ink-3 sm:block" />
           </div>
+          <WorkStack projects={projects} />
+        </section>
 
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <a href="/Damilola-Olawoore-Resume.pdf" download className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-violet-900/20 font-mono">
-              <span>Resume.pdf</span>
-              <span className="material-symbols-outlined text-sm">download</span>
-            </a>
-
-            {/* Hamburger Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 active:scale-90 transition-all relative z-[210]"
-              aria-label="Toggle Menu"
-            >
-              <span className="material-symbols-outlined text-2xl">
-                {isMenuOpen ? 'close' : 'menu'}
-              </span>
-            </button>
+        <section id="capabilities" className="border-y border-line bg-paper-2">
+          <div className="mx-auto grid max-w-6xl gap-12 px-5 py-28 sm:px-8 md:grid-cols-12">
+            <div className="md:col-span-4">
+              <SplitText as="h2" className="display text-5xl sm:text-6xl md:sticky md:top-28" parts={[{ text: 'What I' }, { text: 'work with', accent: true }]} />
+            </div>
+            <dl className="md:col-span-8">
+              {capabilities.map((c, i) => (
+                <Reveal key={c.title} delay={i * 0.06}>
+                  <div className="group relative overflow-hidden border-t border-line last:border-b">
+                    <span aria-hidden="true" className="absolute inset-0 translate-y-full bg-accent transition-transform duration-500 ease-out group-hover:translate-y-0" />
+                    <div className="relative grid gap-x-8 gap-y-3 px-1 py-7 transition-[padding] duration-500 group-hover:px-5 sm:grid-cols-5">
+                      <dt className="text-xl font-medium transition-colors duration-300 group-hover:text-accent-ink sm:col-span-2">{c.title}</dt>
+                      <dd className="sm:col-span-3">
+                        <p className="leading-relaxed text-ink-2 transition-colors duration-300 group-hover:text-accent-ink">{c.body}</p>
+                        <p className="tabular mt-3 text-sm text-ink transition-colors duration-300 group-hover:text-accent-ink">
+                          {c.items.map((t, n) => (
+                            <span key={t}>
+                              {n > 0 && ' · '}
+                              <span className="glitch" data-text={t}>{t}</span>
+                            </span>
+                          ))}
+                        </p>
+                      </dd>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </dl>
           </div>
-        </div>
-      </nav>
+        </section>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-white dark:bg-slate-950 z-[9999] flex flex-col transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800/50">
-          <span className="font-mono font-bold text-primary tracking-widest text-sm">MENU</span>
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-              <span className="material-symbols-outlined">close</span>
-            </button>
+        <section id="about" className="mx-auto max-w-6xl px-5 py-32 sm:px-8">
+          <SplitText
+            as="h2"
+            className="display max-w-5xl text-[clamp(3rem,9vw,8rem)]"
+            parts={[{ text: 'Engineering for' }, { text: 'impact.', accent: true }]}
+          />
+          <div className="mt-20 grid gap-12 md:grid-cols-12">
+            <Reveal className="space-y-8 text-lg leading-relaxed md:col-span-6">
+              <p className="text-ink-2">
+                I’m a full-stack and backend developer with 3+ years of experience building web applications, APIs and data-driven systems. At CVtoCareer I work across four codebases (two Express/TypeScript backends and two Next.js frontends) on shared PostgreSQL and Redis.
+              </p>
+              <div>
+                <h3 className="font-medium">Careful with data</h3>
+                <p className="mt-2 text-ink-2">PII encryption, hash-based lookups and audit trails, and payment integrations with PayPal and Paystack.</p>
+              </div>
+              <div>
+                <h3 className="font-medium">Background work and AI</h3>
+                <p className="mt-2 text-ink-2">BullMQ and Celery job processing, plus LLM-based classification in production. I also use AI assistants to speed up development and debugging.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1} className="md:col-span-5 md:col-start-8">
+              <div className="overflow-hidden rounded-md border border-line bg-paper-2">
+                <div className="tabular flex items-center gap-2 border-b border-line px-4 py-2.5 text-xs text-ink-3">
+                  <span className="size-2 rounded-full bg-accent" aria-hidden="true" /> profile.json
+                </div>
+                <dl className="tabular p-4 text-sm">
+                  {profile.map(([k, v], i) => (
+                    <div key={k} className="grid grid-cols-3 gap-4 py-2">
+                      <dt className="text-ink-3">{k}</dt>
+                      <dd className="col-span-2">
+                        <ScrambleText text={v} delay={i * 90} />
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </Reveal>
           </div>
-        </div>
+        </section>
 
-        <div className="flex flex-col p-8 gap-1 flex-1 overflow-y-auto bg-white dark:bg-slate-950">
-          {navLinks.map((link, idx) => (
-            link.type === 'link' ? (
-              <Link
-                key={link.name}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-xl font-medium font-mono hover:text-primary transition-colors flex items-center justify-between group py-5 border-b border-slate-50 dark:border-slate-800/30"
-                href={link.href}
-              >
-                <span>{link.name}</span>
-                <span className="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0">arrow_forward</span>
-              </Link>
-            ) : (
+        <section id="contact" className="border-t border-line">
+          <div className="mx-auto max-w-6xl px-5 py-32 sm:px-8">
+            <Reveal>
+              <p className="tabular text-sm text-ink-3">got a project in mind?</p>
               <a
-                key={link.name}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-xl font-medium font-mono hover:text-primary transition-colors flex items-center justify-between group py-5 border-b border-slate-50 dark:border-slate-800/30"
-                href={link.href}
+                href={`mailto:${site.email}`}
+                aria-label={`Email ${site.email}`}
+                className="group display mt-5 block break-all text-[clamp(1.5rem,5.8vw,5rem)]"
               >
-                <span>{link.name}</span>
-                <span className="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0">arrow_forward</span>
+                {[...site.email].map((ch, i) => (
+                  <span
+                    key={i}
+                    aria-hidden="true"
+                    className="inline-block transition-[transform,color] duration-300 group-hover:-translate-y-2 group-hover:text-accent"
+                    style={{ transitionDelay: `${i * 18}ms` }}
+                  >
+                    {ch}
+                  </span>
+                ))}
               </a>
-            )
-          ))}
-
-          <a
-            href="/Damilola-Olawoore-Resume.pdf"
-            download
-            className="mt-8 flex items-center justify-between bg-primary text-white p-5 rounded-xl text-lg font-bold font-mono shadow-xl shadow-primary/20"
-          >
-            <span>Resume.pdf</span>
-            <span className="material-symbols-outlined">download</span>
-          </a>
-        </div>
-
-        <div className="mt-auto flex justify-center gap-10 pb-12 text-slate-400 font-mono text-xs uppercase tracking-widest">
-          <a href="https://github.com/dammycute" target="_blank" rel="noopener noreferrer" className="hover:text-primary">GitHub</a>
-          <a href="https://x.com/ht__code" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Twitter</a>
-          <a href="https://www.linkedin.com/in/htcode/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">LinkedIn</a>
-        </div>
-      </div>
-
-      {/* Hero Header */}
-      <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 z-0 opacity-10 dark:opacity-20 pointer-events-none">
-          <div className="absolute inset-0" style={{
-            backgroundImage: "linear-gradient(to right, #334155 1px, transparent 1px), linear-gradient(to bottom, #334155 1px, transparent 1px)",
-            backgroundSize: "4rem 4rem"
-          }}></div>
-          <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-pulse-slow"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col gap-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-mono font-medium w-fit mx-auto lg:mx-0 animate-fade-in-up">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-              </span>
-              Available for New Projects
-            </div>
-            <h1 className="text-4xl lg:text-7xl font-black leading-[1.1] tracking-tight animate-fade-in-up delay-100">
-              Crafting <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-500 font-mono text-3xl lg:text-6xl">&lt;FullStack&gt;</span> <br />
-              Experiences.
-            </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up delay-200 font-mono text-sm lg:text-base">
-              {`// Software Engineer specializing in building scalable backends and high-performance web applications. Turning complex problems into elegant, efficient solutions.`}
-            </p>
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-4 animate-fade-in-up delay-300">
-              <a className="group flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded font-bold transition-all hover:bg-primary-dark hover:scale-105 shadow-lg shadow-violet-500/20 font-mono text-sm" href="#projects">
-                View Work
-                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">rocket_launch</span>
-              </a>
-              <a className="flex items-center justify-center gap-2 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-gray-200 dark:border-slate-700 px-8 py-4 rounded font-bold transition-all hover:border-primary/50 hover:text-primary font-mono text-sm" href="#contact">
-                Contact Me
-              </a>
-            </div>
-            <div className="mt-12 flex items-center justify-center lg:justify-start gap-6 text-slate-500 animate-fade-in-up delay-500 font-mono text-xs">
-              <span className="uppercase tracking-widest">Stack</span>
-              <div className="flex gap-4 opacity-70 flex-wrap justify-center lg:justify-start">
-                <span className="hover:text-primary transition-colors cursor-default">Django</span>
-                <span className="hover:text-primary transition-colors cursor-default">PostgreSQL</span>
-                <span className="hover:text-primary transition-colors cursor-default">Redis</span>
-                <span className="hover:text-primary transition-colors cursor-default">React</span>
-                <span className="hover:text-primary transition-colors cursor-default">AI Assistants</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="hidden lg:block relative animate-fade-in-up delay-300">
-            <div className="relative w-full rounded-lg overflow-hidden shadow-2xl border border-slate-700 bg-[#0f172a] group font-mono text-sm leading-relaxed">
-              <div className="flex items-center gap-2 px-4 py-3 bg-slate-800 border-b border-slate-700">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="ml-2 text-xs text-slate-400">stack.config.json</span>
-              </div>
-              <div className="p-6 text-slate-300">
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">1</span>
-                  <span className="text-purple-400">{"{"}</span>
-                </div>
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">2</span>
-                  <span className="ml-4"><span className="text-blue-400">{`"name"`}</span>: <span className="text-green-400">{`"Damilola Olawoore"`}</span>,</span>
-                </div>
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">3</span>
-                  <span className="ml-4"><span className="text-blue-400">{`"focus"`}</span>: <span className="text-yellow-400">{`"Scalable Backends"`}</span>,</span>
-                </div>
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">4</span>
-                  <span className="ml-4"><span className="text-blue-400">{`"core_tech"`}</span>: [</span>
-                </div>
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">5</span>
-                  <span className="ml-8"><span className="text-green-400">{`"Python / Django"`}</span>,</span>
-                </div>
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">6</span>
-                  <span className="ml-8"><span className="text-green-400">{`"Next.js / React"`}</span>,</span>
-                </div>
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">7</span>
-                  <span className="ml-8"><span className="text-green-400">{`"MongoDB / PostgreSQL"`}</span>,</span>
-                </div>
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">8</span>
-                  <span className="ml-8"><span className="text-green-400">{`"Celery / Redis"`}</span></span>
-                </div>
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">9</span>
-                  <span className="ml-4">]</span>
-                </div>
-                <div className="flex">
-                  <span className="text-slate-600 select-none w-8 text-right mr-4">10</span>
-                  <span className="text-purple-400">{"}"}</span><span className="cursor-blink border-l-2 border-primary ml-1 h-4 inline-block align-middle"></span>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute -bottom-6 -right-6 bg-slate-800 p-4 rounded border border-slate-700 shadow-xl flex items-center gap-4 animate-float z-20">
-              <div className="flex flex-col">
-                <span className="text-xs text-slate-400 uppercase font-mono">Experience</span>
-                <span className="font-bold text-primary font-mono text-sm">3+ Years</span>
-              </div>
-              <div className="h-8 w-[1px] bg-slate-700"></div>
-              <div className="flex flex-col">
-                <span className="text-xs text-slate-400 uppercase font-mono">Delivered</span>
-                <span className="font-bold text-green-400 font-mono text-sm">20+ Projects</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <a className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 hover:text-primary transition-colors animate-bounce cursor-pointer font-mono" href="#expertise">
-          <span className="text-xs uppercase tracking-widest">Stack Details</span>
-          <span className="material-symbols-outlined">keyboard_double_arrow_down</span>
-        </a>
-      </header>
-
-      {/* Expertise Section */}
-      <section className="py-24 relative overflow-hidden bg-slate-900 border-t border-slate-700" id="expertise">
-        <div className="max-w-7xl mx-auto px-6 mb-16">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">Core Tech Stack</h2>
-              <p className="text-slate-400 max-w-2xl font-mono text-sm">
-                &gt; Specialized toolkit for high-performance systems.
+            </Reveal>
+            <Reveal delay={0.1} className="mt-12 max-w-xl text-ink-2">
+              <p className="leading-relaxed">
+                A backend, a web app or a tricky integration: tell me what you’re building and I’ll reply with how I’d approach it.
               </p>
-            </div>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 text-sm text-ink">
+                <Magnetic>
+                  <a href={site.resume} download className="inline-flex items-center gap-1 rounded-sm bg-accent px-5 py-3 font-medium text-accent-ink">
+                    Download résumé <ArrowUpRight size={14} />
+                  </a>
+                </Magnetic>
+                {site.socials.map((s) => (
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="link-line inline-flex items-center gap-1">
+                    {s.label} <ArrowUpRight size={14} />
+                  </a>
+                ))}
+              </div>
+            </Reveal>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded bg-slate-800/50 border border-slate-700 hover:border-primary/50 transition-colors group">
-              <div className="w-12 h-12 bg-blue-500/10 rounded flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                <span className="material-symbols-outlined">code</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 font-mono text-white">Languages</h3>
-              <p className="text-sm text-slate-400 mb-4">Primary focus on Python for scalable logic and Next.js for modern web interfaces.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">Python</span>
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">Next.js</span>
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">SQL</span>
-              </div>
-            </div>
-            <div className="p-6 rounded bg-slate-800/50 border border-slate-700 hover:border-primary/50 transition-colors group">
-              <div className="w-12 h-12 bg-purple-500/10 rounded flex items-center justify-center text-purple-500 mb-6 group-hover:bg-purple-500 group-hover:text-white transition-colors">
-                <span className="material-symbols-outlined">database</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 font-mono text-white">Data Store</h3>
-              <p className="text-sm text-slate-400 mb-4">Architecting persistent and in-memory data layers for scalability.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">PostgreSQL</span>
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">MongoDB</span>
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">Redis</span>
-              </div>
-            </div>
-            <div className="p-6 rounded bg-slate-800/50 border border-slate-700 hover:border-primary/50 transition-colors group">
-              <div className="w-12 h-12 bg-emerald-500/10 rounded flex items-center justify-center text-emerald-500 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
-                <span className="material-symbols-outlined">hub</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 font-mono text-white">Async & Queue</h3>
-              <p className="text-sm text-slate-400 mb-4">Handling background tasks and distributed message processing efficiently.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">Celery</span>
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">Redis</span>
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">WebSockets</span>
-              </div>
-            </div>
-            <div className="p-6 rounded bg-slate-800/50 border border-slate-700 hover:border-primary/50 transition-colors group">
-              <div className="w-12 h-12 bg-orange-500/10 rounded flex items-center justify-center text-orange-500 mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                <span className="material-symbols-outlined">smart_toy</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 font-mono text-white">AI Workflow</h3>
-              <p className="text-sm text-slate-400 mb-4">Expertise in leveraging AI coding assistants for accelerated development.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">GitHub Copilot</span>
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">ChatGPT</span>
-                <span className="text-xs font-mono px-2 py-1 bg-slate-700 rounded text-slate-300">Claude</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <WorkExperienceSection />
-
-      {/* Scrolling Text Banner */}
-      <div className="py-12 bg-slate-900 border-y border-slate-700 overflow-hidden">
-        <div className="whitespace-nowrap flex animate-scroll-left">
-          <span className="text-4xl font-black text-slate-700 dark:text-slate-600/30 px-8 font-mono">BACKEND DEVELOPMENT • FULLSTACK SOLUTIONS • AI ASSISTED CODING • PYTHON EXPERT • NEXT.JS SPECIALIST •</span>
-          <span className="text-4xl font-black text-slate-700 dark:text-slate-600/30 px-8 font-mono">BACKEND DEVELOPMENT • FULLSTACK SOLUTIONS • AI ASSISTED CODING • PYTHON EXPERT • NEXT.JS SPECIALIST •</span>
-        </div>
-      </div>
-
-      {/* About Section */}
-      <section className="py-24 relative bg-background-light dark:bg-[#0c0f19]" id="about">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2 relative">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">Engineering for Impact</h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                {`I specialize in building high-performance, scalable systems that solve real-world problems. My approach combines deep technical expertise with a focus on clean architecture and seamless user experiences.`}
-              </p>
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined">bolt</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Scalable Architecture</h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm">Focusing on robust backend foundations, utilizing Celery and Redis for asynchronous task processing and high-availability systems.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined">group</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Collaborative AI</h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm">I partner with cutting-edge AI assistants to accelerate development without compromising on code quality or architectural integrity.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/2 w-full">
-              <div className="bg-slate-900 rounded-lg p-6 font-mono text-sm text-slate-300 shadow-2xl border border-slate-700 w-full">
-                <div className="flex gap-2 mb-4 border-b border-slate-700 pb-4">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <span className="ml-auto text-xs text-slate-500">terminal - zsh</span>
-                </div>
-                <div className="mb-4">
-                  <p><span className="text-green-400">➜</span> <span className="text-blue-400">~</span> cat current_focus.json</p>
-                  <p>{"{"}</p>
-                  <p className="pl-4">{`"role": "Fullstack Engineer",`}</p>
-                  <p className="pl-4">{`"focus": "Scalable Systems & Premium UI",`}</p>
-                  <p className="pl-4">{`"stack": {`}</p>
-                  <p className="pl-8">{`"backend": ["Python", "Django", "Celery"],`}</p>
-                  <p className="pl-8">{`"frontend": ["Next.js", "React", "Tailwind"],`}</p>
-                  <p className="pl-8">{`"database": ["PostgreSQL", "MongoDB", "Redis"]`}</p>
-                  <p className="pl-4">{`},`}</p>
-                  <p className="pl-4">{`"interests": ["System Architecture", "AI Integration"]`}</p>
-                  <p>{"}"}</p>
-                </div>
-                <p className="mb-2">
-                  <span className="text-green-400">➜</span> <span className="text-blue-400">~</span> <span className="animate-pulse">_</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="pt-24 pb-12 relative bg-white dark:bg-[#0f172a] border-t border-slate-200 dark:border-slate-800" id="contact">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded bg-primary/10 text-primary mb-8">
-            <span className="material-symbols-outlined text-3xl">terminal</span>
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-black mb-6 tracking-tight">Got a project in mind?</h2>
-          <p className="text-xl text-slate-500 dark:text-slate-400 mb-12 max-w-xl mx-auto font-mono text-base">
-            {`Whether it's a scalable backend architecture, a high-performance web app, or a complex system integration, let's build it together.`}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-            <a className="inline-flex items-center justify-center gap-3 bg-primary text-white text-lg font-bold px-8 py-4 rounded hover:bg-primary-dark transition-all shadow-xl shadow-violet-900/20 font-mono" href="mailto:damilolaolawoore@gmail.com">
-              Start Collaboration
-              <span className="material-symbols-outlined">send</span>
-            </a>
-            <a className="inline-flex items-center justify-center gap-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-white border border-gray-300 dark:border-slate-600 text-lg font-bold px-8 py-4 rounded hover:border-primary transition-all font-mono" href="/Damilola-Olawoore-Resume.pdf" download>
-              Download CV
-              <span className="material-symbols-outlined">download</span>
-            </a>
-          </div>
-          <div className="border-t border-gray-200 dark:border-slate-800 pt-12 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 flex items-center justify-center bg-slate-200 dark:bg-slate-800 rounded text-primary border border-gray-300 dark:border-slate-700 font-mono font-bold">
-                &gt;_
-              </div>
-              <span className="font-bold text-lg font-mono">&lt;Ht-<span className="text-primary">code</span>/&gt;</span>
-            </div>
-            <div className="flex gap-8 font-mono text-sm">
-              <a className="text-slate-500 hover:text-primary transition-colors" href="https://github.com/dammycute" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a className="text-slate-500 hover:text-primary transition-colors" href="https://x.com/ht__code" target="_blank" rel="noopener noreferrer">Twitter/X</a>
-              <a className="text-slate-500 hover:text-primary transition-colors" href="https://www.linkedin.com/in/htcode/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-            <p className="text-slate-500 text-sm font-mono">
-              © 2026 Ht-code. MIT License.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }
