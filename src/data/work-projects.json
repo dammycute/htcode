@@ -1,5 +1,27 @@
 [
   {
+    "id": "clariva",
+    "title": "Clariva",
+    "company": "Personal project",
+    "role": "Developer",
+    "dateRange": "In progress",
+    "description": "A school management platform I'm building, with a computer-based test engine, fees, grades, attendance and a parent portal. Django REST API with a Next.js frontend.",
+    "techStack": ["Django", "Django REST Framework", "PostgreSQL", "JWT", "Next.js", "React", "TypeScript", "Tailwind CSS"],
+    "caseStudy": {
+      "builtTitle": "Built so far",
+      "overview": "Clariva is a school management platform that I'm still building. Its core is a computer-based test (CBT) engine for running exams, alongside fees, grades, attendance, timetables and a parent portal. Each school's data is kept separate from every other school's.",
+      "built": [
+        "A CBT exam engine that starts or resumes sessions, shuffles questions and options for each student, enforces a start and end window, and grades submissions on the server",
+        "Grading rules that compare answers case-insensitively, resolve multiple-choice letters to option text, and track tab switches and late submissions",
+        "A question-bank upload that parses Word (.docx) files into multiple-choice, true/false and short-answer questions",
+        "Role-based permissions: admins, principals and teachers manage exams, while students can only start an exam, read its questions and submit",
+        "Separate admin, student and parent areas in the Next.js app, with route guards and JWT login that refreshes automatically",
+        "Fees with pricing per class arm and invoices, continuous-assessment grades, attendance and timetables",
+        "A public parent and student record lookup by student code"
+      ]
+    }
+  },
+  {
     "id": "rccg-providence",
     "title": "RCCG Providence Centre",
     "company": "Kreva & Co.",
