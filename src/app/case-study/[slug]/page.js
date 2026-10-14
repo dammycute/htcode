@@ -62,7 +62,7 @@ export default async function CaseStudy({ params }) {
         <div className="mt-14 grid gap-12 md:grid-cols-12">
           <aside className="space-y-8 self-start text-sm md:sticky md:top-28 md:col-span-3">
             <dl className="tabular space-y-4 border-t border-line pt-4">
-              {[['role', project.role], ['client', project.company], ['timeline', project.dateRange]].map(([k, v]) => (
+              {[['role', project.role], ['client', project.company], ['timeline', project.dateRange]].filter(([, v]) => v).map(([k, v]) => (
                 <div key={k}>
                   <dt className="text-ink-3">{k}</dt>
                   <dd className="mt-0.5">{v}</dd>
@@ -100,7 +100,7 @@ export default async function CaseStudy({ params }) {
             </Reveal>
 
             <Reveal>
-              <h2 className="display text-4xl">What’s in it</h2>
+              <h2 className="display text-4xl">{cs.builtTitle ?? 'What’s in it'}</h2>
               <ul className="mt-6 divide-y divide-line border-y border-line">
                 {cs.built.map((item, i) => (
                   <li key={item} className="grid grid-cols-[3rem_1fr] py-4 leading-relaxed">
@@ -110,7 +110,7 @@ export default async function CaseStudy({ params }) {
                 ))}
               </ul>
               <p className="tabular mt-6 text-xs text-ink-3">
-                Based on the project’s public repository and live site.
+                Summarised from the project’s README and live site, where available.
               </p>
             </Reveal>
           </div>
